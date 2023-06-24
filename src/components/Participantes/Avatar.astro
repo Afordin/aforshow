@@ -3,7 +3,7 @@ const { img, name } = Astro.props
 ---
 
 <picture
-    class="rounded-full hover:gradient grayscale hover:grayscale-0 overflow-hidden p-2 bg-transparent max-w-[226px]"
+    class="rounded-full hover:gradient grayscale hover:grayscale-0 overflow-hidden p-2 bg-transparent max-w-[226px] transition-all"
 >
     <img  src={img} alt={name} />
 </picture>
