@@ -1,0 +1,12 @@
+@layer base {
+    @font-face {
+        font-family: Messapia;
+        font-weight: 400;
+        src: url(fonts\messapia\Messapia-Regular.otf) format('otf');
+    }
+    @font-face {
+        font-family: Messapia;
+        font-weight: 700;
+        src: url(fonts\messapia\Messapia-Bold.otf) format('otf');
+    }
+}
