@@ -1,9 +1,10 @@
 ---
-const { img, name } = Astro.props
+import type { Participant } from '../../types/types'
+const { participant } = Astro.props as { participant: Participant }
 ---
 
 <picture
     class="rounded-full hover:gradient grayscale hover:grayscale-0 overflow-hidden p-2 bg-transparent max-w-[226px] transition-all"
 >
-    <img  src={img} alt={name} />
+    <img src={participant.img} alt={participant.name} />
 </picture>
