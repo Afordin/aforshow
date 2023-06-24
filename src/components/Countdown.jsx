@@ -29,7 +29,7 @@ const Countdown = ({ targetDate }) => {
 
     return (
         <div className="m-auto text-center text-3xl mt-4">
-            <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8]">
+            <span class="font-extrabold text-gradient">
                 Faltan{' '}
             </span>
             {timeLeft.days > 0 && (
