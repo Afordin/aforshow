@@ -1,12 +1,16 @@
+---
+import Countdown from '../components/Countdown'
+---
+
 <header
-    class="h-screen bg-[url('/bg_presentation.jpg')] bg-fixed bg-cover bg-center overflow-hidden p-8"
+    class="h-screen bg-[url('/bg_presentation.jpg')] bg-fixed bg-cover bg-center overflow-x-hidden p-8"
 >
     <section class="m-auto">
         <div class="transition-all hover:scale-105 cursor-pointer">
             <img
                 src="/stars_logo.svg"
                 alt="Stars"
-                class="m-auto pt-24 w-[16rem]"
+                class="m-auto pt-20 w-[16rem]"
             />
             <img
                 src="/svg_name.svg"
@@ -32,7 +36,10 @@
 
                 <span class="text-gray-500">20:00 Hs</span>
             </h3>
-            <div class="relative flex w-[80%] md:w-1/4 mx-auto mt-10">
+
+            <Countdown targetDate="2023-07-21T20:00:00" client:visible />
+
+            <div class="relative flex w-[80%] md:w-1/4 mx-auto mt-4">
                 <a
                     href="https://docs.google.com/forms/d/e/1FAIpQLSfOnnrFperV87C10Mk_jNWuaxZY60VS11_G7sKmxp1MrE0mAQ/viewform?pli=1"
                     target="_blank"
@@ -51,7 +58,9 @@
                 </a>
             </div>
         </div>
-        <div class="m-auto text-center flex justify-end flex-col min-h-[100px]">
+        <div
+            class="m-auto text-center text-xl flex justify-end flex-col min-h-[80px]"
+        >
             <a
                 href="http://twitch.tv/afor_digital"
                 target="_blank"
