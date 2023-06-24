@@ -1,3 +1,7 @@
+/* El archivo base.css inyectado por defecto de la integración */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @layer base {
     @font-face {
         font-family: Messapia;
@@ -8,5 +12,11 @@
         font-family: Messapia;
         font-weight: 700;
         src: url(fonts\messapia\Messapia-Bold.otf) format('otf');
+    }
+}
+@layer utilities{
+    .text-gradient {
+        @apply  text-transparent bg-clip-text bg-gradient-to-br from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8]
+         
     }
 }
