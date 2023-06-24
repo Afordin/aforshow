@@ -14,9 +14,14 @@
         src: url(fonts\messapia\Messapia-Bold.otf) format('otf');
     }
 }
-@layer utilities{
+@layer utilities {
+    .color-gradient{
+        @apply from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8];
+    }
+    .gradient {
+        @apply bg-gradient-to-br  color-gradient via-55% from-35% to-75%;
+    }
     .text-gradient {
-        @apply  text-transparent bg-clip-text bg-gradient-to-br from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8]
-         
+        @apply text-transparent bg-clip-text  gradient;
     }
 }
