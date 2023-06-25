@@ -28,20 +28,37 @@ const Countdown = ({ targetDate }) => {
     })
 
     return (
-        <div className="m-auto text-center text-3xl mt-4">
-            <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8]">
-                Faltan{' '}
-            </span>
+        <div className="m-auto h-[100%] flex-col md:flex-row items-center text-center text-3xl mt-4 flex gap-8">
             {timeLeft.days > 0 && (
-                <span class="text-gray-500">{timeLeft.days}d </span>
+                <div className="text-gray-400  bg-[#141414] p-2 flex flex-col rounded-lg border-t-2 border-gray-500">
+                    <span class="font-extrabold text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8]">
+                        {timeLeft.days}{' '}
+                    </span>
+                    <span className="">Dias</span>
+                </div>
             )}
             {timeLeft.hours > 0 && (
-                <span class="text-gray-500">{timeLeft.hours}h </span>
+                <div className="text-gray-400  bg-[#141414] p-2 flex flex-col rounded-lg border-t-2 border-gray-500">
+                    <span class="font-extrabold text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8]">
+                        {timeLeft.hours}{' '}
+                    </span>
+                    <span className="">Horas</span>
+                </div>
             )}
             {timeLeft.minutes > 0 && (
-                <span class="text-gray-500">{timeLeft.minutes}m </span>
+                <div className="text-gray-400  bg-[#141414] p-2 flex flex-col rounded-lg border-t-2 border-gray-500">
+                    <span class="font-extrabold text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8]">
+                        {timeLeft.minutes}{' '}
+                    </span>
+                    <span className="">Mins</span>
+                </div>
             )}
-            <span class="text-gray-500">{timeLeft.seconds}s</span>
+            <div className="text-gray-400  bg-[#141414] p-2 flex flex-col rounded-lg border-t-2 border-gray-500">
+                <span class="font-extrabold text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8]">
+                    {timeLeft.seconds}{' '}
+                </span>
+                <span className="">Segs</span>
+            </div>
         </div>
     )
 }

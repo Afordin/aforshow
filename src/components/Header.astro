@@ -3,7 +3,7 @@ import Countdown from '../components/Countdown'
 ---
 
 <header
-    class="h-screen bg-[url('/bg_presentation.jpg')] bg-fixed bg-cover bg-center overflow-hidden p-8"
+    class="h-screen bg-[url('/bg_section.png')] bg-fixed bg-cover bg-center overflow-hidden p-8"
 >
     <section class="m-auto">
         <div class="transition-all hover:scale-105 cursor-pointer">
@@ -17,11 +17,18 @@ import Countdown from '../components/Countdown'
                 alt="Event name"
                 class="m-auto w-[40rem] pt-8"
             />
-            <h3 class="text-white mt-8 mb-4 text-center text-xl">
-                &lt;Charlas y Talleres de <span class="font-semibold"
-                    >Programación /&gt;</span
+            <div class="mt-8 mb-4 text-center">
+                <a
+                    href="http://twitch.tv/afor_digital"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-white text-2xl"
                 >
-            </h3>
+                    &lt;&lt;Twitch.tv/<span class="font-semibold"
+                        >afor_digital &gt;&gt;</span
+                    >
+                </a>
+            </div>
             <h3 class="text-center text-4xl">
                 <span class="font-bold text-white"
                     ><span
@@ -36,8 +43,6 @@ import Countdown from '../components/Countdown'
 
                 <span class="text-gray-500">20:00 Hs</span>
             </h3>
-
-            <Countdown targetDate="2023-07-21T20:00:00" client:visible />
 
             <div class="relative flex w-[80%] md:w-[30%] mx-auto mt-4">
                 <a
@@ -57,17 +62,6 @@ import Countdown from '../components/Countdown'
                     </div>
                 </a>
             </div>
-        </div>
-        <div
-            class="m-auto text-center text-xl flex justify-end flex-col min-h-[80px]"
-        >
-            <a
-                href="http://twitch.tv/afor_digital"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="justify-end text-gray-500 transition-all hover:scale-110 hover:text-white"
-                >Twitch.tv/afor_digital</a
-            >
         </div>
     </section>
 </header>

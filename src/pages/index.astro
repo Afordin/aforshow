@@ -1,4 +1,5 @@
 ---
+import Countdown from '../components/Countdown.jsx'
 import Header from '../components/Header.astro'
 ---
 
@@ -12,7 +13,105 @@ import Header from '../components/Header.astro'
 	</head>
 	<body class="">
 		<Header />
-		<main></main>
+		<main>
+			<section
+				class="py-16 flex flex-col text-center bg-[url(/bg_section.png)] bg-cover bg-fixed bg-center gap-[5rem]"
+			>
+				<h3 class="text-gray-400 text-2xl">Quedan</h3>
+				<Countdown targetDate="2023-07-21T20:00:00" client:visible />
+				<h3 class="text-gray-400 text-2xl">
+					Para el <span class="font-bold">AforShow</span>
+				</h3>
+			</section>
+
+			<section
+				class="py-16 flex flex-col text-center bg-[url(/bg_section.png)] bg-cover bg-fixed bg-center gap-[5rem]"
+			>
+				<h2
+					class="font-extrabold text-4xl text-transparent bg-clip-text bg-gradient-to-r from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8]"
+				>
+					Participantes
+				</h2>
+				<section class="flex gap-12 justify-center px-24">
+					<article
+						class="flex flex-col justify-center gap-4 h-sm hover:scale-110 transition-all hover:-translate-y-8 [&>div]:hover:visible"
+					>
+						<img
+							src="/image_preview_participants.jpg"
+							alt="Imagen de (Nombre de participante)"
+							class="rounded-full transition-all cursor-pointer object-fill max-w-[300px] m-auto"
+						/>
+						<div class="text-gray-400 text-lg invisible">
+							<h3
+								class="text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8] font-extrabold"
+							>
+								Nombre del participante
+							</h3>
+							<h3>Charla/Taller - Tema del taller o charla</h3>
+						</div>
+					</article>
+					<article
+						class="flex flex-col justify-center gap-4 h-sm hover:scale-110 transition-all hover:-translate-y-8 [&>div]:hover:visible"
+					>
+						<img
+							src="/image_preview_participants.jpg"
+							alt="Imagen de (Nombre de participante)"
+							class="rounded-full transition-all cursor-pointer object-fill max-w-[300px] m-auto"
+						/>
+						<div class="text-gray-400 text-lg invisible">
+							<h3
+								class="text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8] font-extrabold"
+							>
+								Nombre del participante
+							</h3>
+							<h3>Charla/Taller - Tema del taller o charla</h3>
+						</div>
+					</article>
+					<article
+						class="flex flex-col justify-center gap-4 h-sm hover:scale-110 transition-all hover:-translate-y-8 [&>div]:hover:visible"
+					>
+						<img
+							src="/image_preview_participants.jpg"
+							alt="Imagen de (Nombre de participante)"
+							class="rounded-full transition-all cursor-pointer object-fill max-w-[300px] m-auto"
+						/>
+						<div class="text-gray-400 text-lg invisible">
+							<h3
+								class="text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8] font-extrabold"
+							>
+								Nombre del participante
+							</h3>
+							<h3>Charla/Taller - Tema del taller o charla</h3>
+						</div>
+					</article>
+					<article
+						class="flex flex-col justify-center gap-4 h-sm hover:scale-110 transition-all hover:-translate-y-8 [&>div]:hover:visible"
+					>
+						<img
+							src="/image_preview_participants.jpg"
+							alt="Imagen de (Nombre de participante)"
+							class="rounded-full transition-all cursor-pointer object-fill max-w-[300px] m-auto"
+						/>
+						<div class="text-gray-400 text-lg invisible">
+							<h3
+								class="text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8] font-extrabold"
+							>
+								Nombre del participante
+							</h3>
+							<h3>Charla/Taller - Tema del taller o charla</h3>
+						</div>
+					</article>
+				</section>
+				<h3 class="text-gray-400 text-2xl">
+					Para estar al tanto de todo unete al <a
+						class="decoration-[#4BC0C8] hover:text-4xl transition-all underline font-extrabold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8]"
+						href="http://"
+						target="_blank"
+						rel="noopener noreferrer">Discord</a
+					>
+				</h3>
+			</section>
+		</main>
 		<footer></footer>
 		<script src="https://embed.twitch.tv/embed/v1.js"></script>
 	</body>
