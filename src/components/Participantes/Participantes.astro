@@ -1,0 +1,37 @@
+---
+import Avatar from './Avatar.astro'
+import type { Participant } from '../../types/types'
+const participants: Participant[] = [
+    {
+        name: 'avatar',
+        img: './avatar.png',
+    },
+    {
+        name: 'avatar',
+        img: './avatar.png',
+    },
+    {
+        name: 'avatar',
+        img: './avatar.png',
+    },
+    {
+        name: 'avatar',
+        img: './avatar.png',
+    },
+]
+---
+
+<section class="p-8">
+    <header class="text-center mb-24">
+        <h2 class="text-4xl text-gradient font-extrabold">Participantes</h2>
+    </header>
+    <div
+        class="flex justify-center lg:gap-24 gap-8 m-auto flex-wrap transition-all"
+    >
+        {
+            participants.map((participant) => (
+                <Avatar participant={participant} />
+            ))
+        }
+    </div>
+</section>
