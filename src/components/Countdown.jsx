@@ -31,7 +31,7 @@ const Countdown = ({ targetDate }) => {
         <div className="m-auto h-[100%] flex-wrap justify-center items-center text-center text-3xl mt-4 flex gap-8">
             {timeLeft.days > 0 && (
                 <div className="text-gray-400  bg-[#141414] p-2 flex flex-col rounded-lg border-t-2 border-gray-500">
-                    <span class="font-extrabold text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8]">
+                    <span class="font-extrabold text-5xl text-gradient">
                         {timeLeft.days}{' '}
                     </span>
                     <span className="">Dias</span>
@@ -39,7 +39,7 @@ const Countdown = ({ targetDate }) => {
             )}
             {timeLeft.hours > 0 && (
                 <div className="text-gray-400  bg-[#141414] p-2 flex flex-col rounded-lg border-t-2 border-gray-500">
-                    <span class="font-extrabold text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8]">
+                    <span class="font-extrabold text-5xl text-gradient">
                         {timeLeft.hours}{' '}
                     </span>
                     <span className="">Horas</span>
@@ -47,14 +47,14 @@ const Countdown = ({ targetDate }) => {
             )}
             {timeLeft.minutes > 0 && (
                 <div className="text-gray-400  bg-[#141414] p-2 flex flex-col rounded-lg border-t-2 border-gray-500">
-                    <span class="font-extrabold text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8]">
+                    <span class="font-extrabold text-5xl text-gradient">
                         {timeLeft.minutes}{' '}
                     </span>
                     <span className="">Mins</span>
                 </div>
             )}
             <div className="text-gray-400  bg-[#141414] p-2 flex flex-col rounded-lg border-t-2 border-gray-500">
-                <span class="font-extrabold text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8]">
+                <span class="font-extrabold text-5xl text-gradient">
                     {timeLeft.seconds}{' '}
                 </span>
                 <span className="">Segs</span>
