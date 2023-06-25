@@ -1,4 +1,6 @@
-export interface Participant{
-    name:string,
-    img:string
+export interface Participant {
+    name: string
+    type: string
+    title: string
+    img: string
 }

@@ -3,8 +3,20 @@ import type { Participant } from '../../types/types'
 const { participant } = Astro.props as { participant: Participant }
 ---
 
-<picture
-    class="rounded-full hover:gradient grayscale hover:grayscale-0 overflow-hidden p-2 bg-transparent max-w-[226px] transition-all"
+<article
+    class="cursor-pointer flex flex-col justify-center gap-4 h-sm hover:scale-110 transition-all hover:-translate-y-8 [&>div]:hover:visible max-w-[250px]"
 >
-    <img src={participant.img} alt={participant.name} />
-</picture>
+    <img
+        src={participant.img}
+        alt={`Imagen de ${participant.name}`}
+        class="rounded-full transition-all cursor-pointer object-fill m-auto"
+    />
+    <div class="text-gray-400 text-lg invisible">
+        <h3
+            class="text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8] font-extrabold"
+        >
+            {participant.name}
+        </h3>
+        <h3>{participant.type} - {participant.title}</h3>
+    </div>
+</article>
