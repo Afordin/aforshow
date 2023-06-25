@@ -4,24 +4,32 @@ import type { Participant } from '../../types/types'
 const participants: Participant[] = [
     {
         name: 'Jhon Doe',
+        descrition:
+            'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor.',
         title: 'Nombre de charla',
         type: 'Charla',
         img: '/image_preview_participants.jpg',
     },
     {
         name: 'Jhon Doe',
+        descrition:
+            'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor.',
         title: 'Nombre de charla',
         type: 'Charla',
         img: '/image_preview_participants.jpg',
     },
     {
         name: 'Jhon Doe',
+        descrition:
+            'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor.',
         title: 'Nombre de charla',
         type: 'Charla',
         img: '/image_preview_participants.jpg',
     },
     {
         name: 'Jhon Doe',
+        descrition:
+            'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor.',
         title: 'Nombre de charla',
         type: 'Charla',
         img: '/image_preview_participants.jpg',
@@ -29,20 +37,15 @@ const participants: Participant[] = [
 ]
 ---
 
-<section
-    class="py-16 flex flex-col text-center  gap-24 px-18"
->
-    <h2
-        class="font-extrabold text-4xl text-transparent bg-clip-text gradient"
-    >
+<section class="py-16 flex flex-col text-center gap-24 px-18">
+    <h2 class="font-extrabold text-4xl text-transparent bg-clip-text gradient">
         Participantes
     </h2>
-    <section class="flex flex-wrap gap-12 w-full justify-center">
+    <section class="flex flex-col gap-12 w-full justify-center">
         {
             participants.map((participant) => (
                 <Avatar participant={participant} />
             ))
         }
     </section>
-   
 </section>
