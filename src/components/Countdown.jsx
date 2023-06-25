@@ -28,7 +28,7 @@ const Countdown = ({ targetDate }) => {
     })
 
     return (
-        <div className="m-auto h-[100%] flex-col md:flex-row items-center text-center text-3xl mt-4 flex gap-8">
+        <div className="m-auto h-[100%] flex-wrap justify-center items-center text-center text-3xl mt-4 flex gap-8">
             {timeLeft.days > 0 && (
                 <div className="text-gray-400  bg-[#141414] p-2 flex flex-col rounded-lg border-t-2 border-gray-500">
                     <span class="font-extrabold text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8]">
