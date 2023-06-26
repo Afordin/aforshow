@@ -186,15 +186,18 @@ export default function Ticket({}) {
                     </div>
                 </div>
             </div>
-            {Logued && (
-                <button
-                    type="button"
-                    onClick={createTweet}
-                    rel="noopener noreferrer"
-                >
-                    Compartir por Twitter
-                </button>
-            )}
+            <div className="m-auto text-center my-4">
+                {Logued && (
+                    <button
+                        type="button"
+                        onClick={createTweet}
+                        rel="noopener noreferrer"
+                        className="p-4 text-white text-2xl bg-blue-600 font-extrabold rounded-full border-4 hover:border-blue-600 hover:text-black hover:bg-white transition-all"
+                    >
+                        Comparte tu ticket por Twitter
+                    </button>
+                )}
+            </div>
         </section>
     )
 }
