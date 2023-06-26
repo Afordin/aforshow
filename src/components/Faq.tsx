@@ -1,5 +1,5 @@
 
-import { useState, useEffect, useRef } from 'react'
+import { useState } from 'react'
 import type { Faq } from '../types/types'
 
 const faq:Faq[] = [
