@@ -32,4 +32,9 @@ export interface Faq {
     answer: string
 }
 
+export interface MenuLink {
+    name: string,
+    anchor: string
+}
+
 export interface Database {}
