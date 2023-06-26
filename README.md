@@ -50,6 +50,14 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
 4. Inicia la aplicación de Astro ejecutando el siguiente comando:
 
    ```bash
+   cp .example.env .env 
+   ```
+
+   Copie el example.env en .env y rellene las variables de entorno
+
+5. Inicia la aplicación de Astro ejecutando el siguiente comando:
+
+   ```bash
    npm run dev
    ```
 
