@@ -1,10 +1,13 @@
 // import Atropos library
 import Atropos from 'atropos'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { supabase } from '../supabase.js'
 
 export default function Ticket() {
-    const [Logued, setLogued] = useState(false)
+    const [Logued, setLogued] = useState(
+        localStorage.getItem('sb-bfbnlgbiigcabrdmrjeb-auth-token') != undefined
+    )
+    const ticketEl = useRef(null)
     const [InfoUserForTicket, setInfoUserForTicket] = useState({})
     useEffect(() => {
         // Initialize
@@ -15,34 +18,112 @@ export default function Ticket() {
             highlight: false,
         })
     }, [])
+    useEffect(() => {
+        if (
+            localStorage.getItem('sb-bfbnlgbiigcabrdmrjeb-auth-token') !=
+                undefined &&
+            !Logued
+        ) {
+            window.location.reload()
+        }
+    }, [])
+
     const onClick = async () => {
         try {
             const { data, error } = await supabase.auth.signInWithOAuth({
                 provider: 'github',
             })
-            console.log(
-                JSON.parse(
-                    localStorage.getItem('sb-bfbnlgbiigcabrdmrjeb-auth-token')
-                )
-            )
             if (error) throw new Error('Error al autenticarte con github')
         } catch (error) {
             alert(error)
         }
     }
+    async function addTicketAfterAuth({ avatar_url, name, user_name }) {
+        return await supabase.from('tickets').insert([
+            {
+                name,
+                username_github: user_name,
+                avatar_url,
+            },
+        ])
+    }
+
+    async function existsTicketForUser({ user_name }) {
+        const data = await supabase
+            .from('tickets')
+            .select('num_ticket')
+            .eq('username_github', user_name)
+        return data.data.length > 0
+    }
+    async function getTicketForUser({ user_name }) {
+        const data = await supabase
+            .from('tickets')
+            .select('num_ticket')
+            .eq('username_github', user_name)
+        return data.data[0].num_ticket
+    }
+    async function checkAndAddTicketAfterAuth({
+        user_name,
+        avatar_url,
+        full_name,
+    }) {
+        const exists = await existsTicketForUser({ user_name })
+        if (!exists) {
+            addTicketAfterAuth({
+                avatar_url,
+                name: full_name,
+                user_name,
+            })
+        }
+    }
     useEffect(() => {
-        const sessionInfo = JSON.parse(
-            localStorage.getItem('sb-bfbnlgbiigcabrdmrjeb-auth-token')
+        try {
+            const sessionInfo = JSON.parse(
+                localStorage.getItem('sb-bfbnlgbiigcabrdmrjeb-auth-token')
+            )
+            if (
+                localStorage.getItem('sb-bfbnlgbiigcabrdmrjeb-auth-token') !=
+                undefined
+            ) {
+                const userCompleteInfo = sessionInfo?.user
+                const { avatar_url, full_name, user_name } =
+                    userCompleteInfo?.user_metadata
+                setInfoUserForTicket({ avatar_url, name: full_name, user_name })
+                checkAndAddTicketAfterAuth({
+                    user_name,
+                    avatar_url,
+                    full_name,
+                })
+                ;(async () => {
+                    const numTicket = await getTicketForUser({ user_name })
+                    setInfoUserForTicket({
+                        avatar_url,
+                        name: full_name,
+                        user_name,
+                        numTicket,
+                    })
+                })()
+                setLogued(true)
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    }, [])
+
+    useEffect(() => {
+        const { data: authListener } = supabase.auth.onAuthStateChange(
+            async (event, session) => {
+                // Verificar si el usuario está autenticado
+                if (event === 'SIGNED_IN') {
+                    // Recargar la página
+                    window.location.reload()
+                }
+            }
         )
-        if (
-            localStorage.getItem('sb-bfbnlgbiigcabrdmrjeb-auth-token') !=
-            undefined
-        ) {
-            const userCompleteInfo = sessionInfo?.user
-            const { avatar_url, name, user_name } =
-                userCompleteInfo?.user_metadata
-            setInfoUserForTicket({ avatar_url, name, user_name })
-            setLogued(true)
+
+        return () => {
+            // Desuscribirse del listener al desmontar el componente
+            authListener.unsubscribe()
         }
     }, [])
 
@@ -54,6 +135,7 @@ export default function Ticket() {
             </h2>
             {!Logued && (
                 <button
+                    ref={ticketEl}
                     className="font-extrabold text-4xl border-4 border-black p-4 bg-orange-400 hover:text-white hover:border-orange-400 hover:bg-black transition-all rounded-full absolute top-[55%] left-[30%] z-[200]"
                     type="button"
                     onClick={onClick}
@@ -107,7 +189,7 @@ export default function Ticket() {
                                     <div className="text-center">
                                         <h4> Ticket N°</h4>
                                         <span className="font-bold text-gradient">
-                                            #00010{' '}
+                                            #{InfoUserForTicket.numTicket}
                                         </span>
                                     </div>
                                     <div className="text-center">
