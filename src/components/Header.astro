@@ -1,9 +1,8 @@
 ---
-import Countdown from '../components/Countdown'
 ---
 
 <header
-    class="min-h-screen lg:min-h-min overflow-hidden p-8 bg-[url('/stars_presentation.svg')]  bg-center bg-no-repeat bg-contain "
+    class="min-h-screen lg:min-h-min overflow-hidden p-8 relative before:content-[''] before:bg-[url('/stars_presentation.svg')] before:opacity-10 before:absolute before:-top-5 before:md:top-10 before:left-1/2 before:-translate-x-1/2 before:-bottom-10 before:max-w-[40rem] before:w-full before:m-auto before:bg-center before:bg-no-repeat before:bg-contain"
 >
     <section class="m-auto">
         <div class="transition-all hover:scale-105 cursor-pointer">
@@ -43,7 +42,7 @@ import Countdown from '../components/Countdown'
                     href="https://docs.google.com/forms/d/e/1FAIpQLSfOnnrFperV87C10Mk_jNWuaxZY60VS11_G7sKmxp1MrE0mAQ/viewform?pli=1"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="m-auto text-center rounded-xl w-full transition-all  p-[2px] gradient hover:scale-105 hover:[&>div>div]:text-black"
+                    class="m-auto text-center rounded-xl w-full transition-all p-[2px] gradient hover:scale-105 hover:[&>div>div]:text-black"
                 >
                     <div
                         class="flex flex-col justify-between h-full bg-black hover:bg-transparent rounded-lg p-2"
