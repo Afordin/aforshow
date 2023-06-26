@@ -1,8 +1,26 @@
 // import Atropos library
 import Atropos from 'atropos'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { useUser } from '../hooks/useUser'
+import type { Ticket as TicketType } from '../types/types'
+import { supabase } from '../utils/supebase'
+
+const tickerDefault: TicketType = {
+    number: '00000',
+    email: '',
+    name: '',
+    userName: 'afor_digital',
+    avatar: '/avatar.png',
+}
 
 export default function Ticket() {
+    const { user } = useUser()
+    const handleLogin = async () => {
+        const { data, error } = await supabase.auth.signInWithOAuth({
+            provider: 'github',
+        })
+    }
+    const [ticket, setTicket] = useState<TicketType>(tickerDefault)
     useEffect(() => {
         // Initialize
         const myAtropos = Atropos({
@@ -12,8 +30,20 @@ export default function Ticket() {
             highlight: false,
         })
     }, [])
+    useEffect(() => {
+        console.log(user)
+        if (user != null) {
+            setTicket({
+                number: '0000',
+                name: user.name,
+                email: user.email,
+                userName: user.userName,
+                avatar: user.avatar,
+            })
+        }
+    }, [user])
     return (
-        <section className="max-w-[862px] m-auto my-8">
+        <section className="max-w-[862px] m-auto my-8" id="Ticket">
             <h2 className="font-extrabold text-4xl text-gradient text-center mb-24">
                 {' '}
                 Ticket
@@ -61,13 +91,13 @@ export default function Ticket() {
                                     <div className="text-center">
                                         <h4> Ticket N°</h4>
                                         <span className="font-bold text-gradient">
-                                            #00010{' '}
+                                            #{ticket.number}{' '}
                                         </span>
                                     </div>
                                     <div className="text-center">
-                                        <h4>Sara Montagud</h4>
+                                        <h4>{ticket.name}</h4>
                                         <span className="font-bold text-gradient">
-                                            @afor_digital
+                                            @{ticket.userName}
                                         </span>
                                     </div>
                                 </footer>
@@ -75,12 +105,12 @@ export default function Ticket() {
                             <div className="absolute top-12 right-12">
                                 <picture
                                     data-atropos-offset="6"
-                                    class="rounded-full w-[72px] overflow-hidden p-1 gradient inline-block"
+                                    className="rounded-full w-[72px] overflow-hidden p-1 gradient inline-block"
                                 >
                                     <img
-                                        src="/avatar.png"
-                                        alt={`Imagen de usuario`}
-                                        class="w-full rounded-full "
+                                        src={ticket.avatar}
+                                        alt={`Imagen de ${ticket.userName}`}
+                                        className="w-full rounded-full "
                                     />
                                 </picture>
                             </div>
@@ -88,6 +118,17 @@ export default function Ticket() {
                     </div>
                 </div>
             </div>
+
+            {user == null && (
+                <div className="flex justify-center items-center my-4">
+                    <button
+                        className="bg-black  text-white rounded-lg p-2 "
+                        onClick={() => handleLogin()}
+                    >
+                        Acceder a tu cuenta para ver tu Preview Ticket
+                    </button>
+                </div>
+            )}
         </section>
     )
 }
