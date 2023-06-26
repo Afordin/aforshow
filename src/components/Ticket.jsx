@@ -21,7 +21,7 @@ export default function Ticket() {
             <div className="atropos reltive" id="userTicket">
                 <div className="atropos-scale">
                     <div className="atropos-rotate">
-                        <div className="atropos-inner">
+                        <div className="atropos-inner relative">
                             <img src="/ticket.svg"></img>
                             <div className="absolute top-12 left-1/2 -translate-x-1/2 text-2xl text-neutral-200 w-[520px] ">
                                 <header data-atropos-offset="2">
