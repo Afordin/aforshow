@@ -50,7 +50,7 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
 4. Inicia la aplicación de Astro ejecutando el siguiente comando:
 
    ```bash
-   touch .example.env .env
+   cp .example.env .env 
    ```
 
    Copie el example.env en .env y rellene las variables de entorno
