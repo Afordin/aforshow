@@ -5,5 +5,5 @@ const supabaseUrl =
 
 const supabaseAnonKey =
     impoer.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJmYm5sZ2JpaWdjYWJyZG1yamViIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODc3NDAzMDcsImV4cCI6MjAwMzMxNjMwN30.HjCLMge_-WegZY2T1Rm8NB1jzW1Pt9RUaZq0nlZ0Xb4'
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdzcG93ZW90b3hia2xkbnRxaHhiIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODc4MjEyOTIsImV4cCI6MjAwMzM5NzI5Mn0.ElkPuiLwyUd8b9UsHG7r2-y5JpAAv4fMOHJqMk6yp1w'
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
