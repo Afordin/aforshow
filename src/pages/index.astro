@@ -3,6 +3,7 @@ import Countdown from '../components/Countdown.jsx'
 import Header from '../components/Header.astro'
 import Participantes from '../components/Participantes/Participantes.astro'
 import Ticket from '../components/Ticket'
+import Faq from '../components/Faq.jsx'
 import '../../public/global.css'
 ---
 
@@ -30,6 +31,8 @@ import '../../public/global.css'
 			</section>
 			<Participantes />
 			<Ticket client:only="react" />
+			<Faq client:only="react" />
+
 		</main>
 		<footer>
 			<h3 class="text-gray-400 text-2xl text-center pb-16">

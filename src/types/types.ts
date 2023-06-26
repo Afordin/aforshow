@@ -13,4 +13,9 @@ export type Json =
     | { [key: string]: Json }
     | Json[]
 
+export interface Faq {
+    question: string
+    answer: string
+}
+
 export interface Database {}
