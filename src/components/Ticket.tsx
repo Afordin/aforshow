@@ -76,6 +76,16 @@ export default function Ticket({}) {
 
     return (
         <section className="max-w-[862px] m-auto my-8 relative">
+            <meta
+                property="og:title"
+                content={`Aforshow -  Evento de programacion de charlas y talleres para la comunidad`}
+            />
+            <meta
+                property="og:description"
+                content={`Ticket para la Aforshow`}
+            />
+            <meta property="og:image" content={`/svg_name.svg`} />
+            <meta property="og:url" content={`/`} />
             <h2 className="font-extrabold text-4xl text-gradient text-center mb-24">
                 {' '}
                 Ticket
