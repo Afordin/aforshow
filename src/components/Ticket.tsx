@@ -86,6 +86,16 @@ export default function Ticket({}) {
             />
             <meta property="og:image" content={`/svg_name.svg`} />
             <meta property="og:url" content={`/`} />
+            <meta
+                property="twitter:title"
+                content={`Aforshow -  Evento de programacion de charlas y talleres para la comunidad`}
+            />
+            <meta
+                property="twitter:description"
+                content={`Ticket para la Aforshow`}
+            />
+            <meta property="twitter:image" content={`/svg_name.svg`} />
+            <meta property="twitter:url" content={`/`} />
             <h2 className="font-extrabold text-4xl text-gradient text-center mb-24">
                 {' '}
                 Ticket
