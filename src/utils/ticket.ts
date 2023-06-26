@@ -7,7 +7,7 @@ export async function getTicket(user: User): Promise<Ticket> {
         if (ticket) {
             return JSON.parse(ticket) as Ticket
         }
-        let data = await findDatabase(user)
+        let data = await findDatabase(user.userName)
         if (!data.data) {
             let result = await insertDatabase(user)
 
@@ -15,7 +15,7 @@ export async function getTicket(user: User): Promise<Ticket> {
                 console.log({ error: result.error })
                 throw 'No se pudo insertar el ticket'
             }
-            data = await findDatabase(user)
+            data = await findDatabase(user.userName)
             if (!data.data) {
                 throw 'error al obtener el ticket'
             }
@@ -27,11 +27,11 @@ export async function getTicket(user: User): Promise<Ticket> {
     }
 }
 
-export async function findDatabase(user: User) {
+export async function findDatabase(userName: string) {
     return await supabase
         .from('tickets')
         .select('num_ticket , name, username_github, avatar_url')
-        .eq('username_github', user.userName)
+        .eq('username_github', userName)
         .single()
 }
 export async function insertDatabase(user: User) {
