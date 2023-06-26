@@ -2,18 +2,17 @@
 import Atropos from 'atropos'
 import { useEffect, useRef, useState } from 'react'
 import { useUser } from '../hooks/useUser.js'
-import type { Ticket, Ticket as TicketType } from '../types/types'
+import type { Ticket as TicketType } from '../types/types'
 import { findDatabase, getTicket } from '../utils/ticket.js'
-
+const urlRedirect =
+    import.meta.env.PUBLIC_URL_REDIRECT ||
+    'https://tubular-marzipan-aaf90d.netlify.app/'
 const tickerDefault: TicketType = {
     num_ticket: '00000',
     name: '',
     username_github: 'afor_digital',
     avatar_url: '/avatar.png',
 }
-const urlRedirect =
-    import.meta.env.URL_REDIRECT ||
-    'https://tubular-marzipan-aaf90d.netlify.app/'
 
 export default function Ticket({}) {
     const [FoundedTicket, setFoundedTicket] = useState(false)
@@ -37,16 +36,11 @@ export default function Ticket({}) {
             params.get('username') != undefined &&
             params.get('username') != ''
         ) {
-            findDatabase({
-                name: '',
-                email: '',
-                avatar: '',
-                userName: params.get('username'),
-            })
+            findDatabase(params.get('username'))
                 .then((res) => res.data)
                 .then((userInfo) => {
                     if (userInfo.username_github == params.get('username')) {
-                        setTicket(userInfo as Ticket)
+                        setTicket(userInfo as TicketType)
                         setFoundedTicket(true)
                     }
                 })
@@ -84,8 +78,8 @@ export default function Ticket({}) {
                 property="og:description"
                 content={`Ticket para la Aforshow`}
             />
-            <meta property="og:image" content={`/svg_name.svg`} />
-            <meta property="og:url" content={`/`} />
+            <meta property="og:image" content={`${urlRedirect}/svg_name.svg`} />
+            <meta property="og:url" content={`${urlRedirect}`} />
             <meta
                 property="twitter:title"
                 content={`Aforshow -  Evento de programacion de charlas y talleres para la comunidad`}
@@ -186,15 +180,18 @@ export default function Ticket({}) {
                     </div>
                 </div>
             </div>
-            {Logued && (
-                <button
-                    type="button"
-                    onClick={createTweet}
-                    rel="noopener noreferrer"
-                >
-                    Compartir por Twitter
-                </button>
-            )}
+            <div className="m-auto text-center my-4">
+                {Logued && (
+                    <button
+                        type="button"
+                        onClick={createTweet}
+                        rel="noopener noreferrer"
+                        className="p-4 text-white text-2xl bg-blue-600 font-extrabold rounded-full border-4 hover:border-blue-600 hover:text-black hover:bg-white transition-all"
+                    >
+                        Comparte tu ticket por Twitter
+                    </button>
+                )}
+            </div>
         </section>
     )
 }
