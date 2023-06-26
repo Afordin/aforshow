@@ -2,8 +2,8 @@
 import Atropos from 'atropos'
 import { useEffect, useRef, useState } from 'react'
 import { useUser } from '../hooks/useUser.js'
-import type { Ticket as TicketType } from '../types/types'
-import { getTicket } from '../utils/ticket.js'
+import type { Ticket, Ticket as TicketType } from '../types/types'
+import { findDatabase, getTicket } from '../utils/ticket.js'
 
 const tickerDefault: TicketType = {
     num_ticket: '00000',
@@ -11,10 +11,16 @@ const tickerDefault: TicketType = {
     username_github: 'afor_digital',
     avatar_url: '/avatar.png',
 }
-export default function Ticket() {
+const urlRedirect =
+    import.meta.env.URL_REDIRECT ||
+    'https://tubular-marzipan-aaf90d.netlify.app/'
+
+export default function Ticket({}) {
+    const [FoundedTicket, setFoundedTicket] = useState(false)
     const { user, Logued, signIn } = useUser()
 
     const ticketEl = useRef(null)
+    const tickeSvgtEl = useRef(null)
     const [ticket, setTicket] = useState<TicketType>(tickerDefault)
     useEffect(() => {
         // Initialize
@@ -24,11 +30,33 @@ export default function Ticket() {
             shadowScale: 1,
             highlight: false,
         })
+        const params = new URLSearchParams(
+            window.location.search.replace('?', '')
+        )
+        if (
+            params.get('username') != undefined &&
+            params.get('username') != ''
+        ) {
+            findDatabase({
+                name: '',
+                email: '',
+                avatar: '',
+                userName: params.get('username'),
+            })
+                .then((res) => res.data)
+                .then((userInfo) => {
+                    if (userInfo.username_github == params.get('username')) {
+                        setTicket(userInfo as Ticket)
+                        setFoundedTicket(true)
+                    }
+                })
+        }
     }, [])
 
     const onClick = async () => {
         signIn()
     }
+    const createTweet = () => {}
 
     useEffect(() => {
         try {
@@ -52,7 +80,7 @@ export default function Ticket() {
                 {' '}
                 Ticket
             </h2>
-            {!Logued && (
+            {!Logued && !FoundedTicket && (
                 <button
                     ref={ticketEl}
                     className="font-extrabold text-4xl border-4 border-black p-4 bg-orange-400 hover:text-white hover:border-orange-400 hover:bg-black transition-all rounded-full absolute top-[55%] left-[30%] z-[200]"
@@ -63,8 +91,11 @@ export default function Ticket() {
                 </button>
             )}
             <div
-                className={`atropos reltive ${!Logued && 'blur-sm'}`}
+                className={`atropos reltive ${
+                    !Logued && !FoundedTicket && 'blur-sm'
+                }`}
                 id="userTicket"
+                ref={tickeSvgtEl}
             >
                 <div className="atropos-scale">
                     <div className="atropos-rotate">
@@ -135,6 +166,15 @@ export default function Ticket() {
                     </div>
                 </div>
             </div>
+            {Logued && (
+                <button
+                    type="button"
+                    onClick={createTweet}
+                    rel="noopener noreferrer"
+                >
+                    Compartir por Twitter
+                </button>
+            )}
         </section>
     )
 }
