@@ -2,7 +2,7 @@ import type { User } from '../types/types'
 import { useEffect, useState } from 'react'
 import { supabase } from '../utils/supebase'
 
-const urlRedirect = import.meta.env.URL_REDIRECT
+const urlRedirect = import.meta.env.PUBLIC_URL_REDIRECT
 export const useUser = () => {
     const [user, setUser] = useState<User | null>(null)
     useEffect(() => {
