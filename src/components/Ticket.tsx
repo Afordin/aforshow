@@ -2,18 +2,17 @@
 import Atropos from 'atropos'
 import { useEffect, useRef, useState } from 'react'
 import { useUser } from '../hooks/useUser.js'
-import type { Ticket, Ticket as TicketType } from '../types/types'
+import type { Ticket as TicketType } from '../types/types'
 import { findDatabase, getTicket } from '../utils/ticket.js'
-
+const urlRedirect =
+    import.meta.env.PUBLIC_URL_REDIRECT ||
+    'https://tubular-marzipan-aaf90d.netlify.app/'
 const tickerDefault: TicketType = {
     num_ticket: '00000',
     name: '',
     username_github: 'afor_digital',
     avatar_url: '/avatar.png',
 }
-const urlRedirect =
-    import.meta.env.URL_REDIRECT ||
-    'https://tubular-marzipan-aaf90d.netlify.app/'
 
 export default function Ticket({}) {
     const [FoundedTicket, setFoundedTicket] = useState(false)
@@ -37,16 +36,11 @@ export default function Ticket({}) {
             params.get('username') != undefined &&
             params.get('username') != ''
         ) {
-            findDatabase({
-                name: '',
-                email: '',
-                avatar: '',
-                userName: params.get('username'),
-            })
+            findDatabase(params.get('username'))
                 .then((res) => res.data)
                 .then((userInfo) => {
                     if (userInfo.username_github == params.get('username')) {
-                        setTicket(userInfo as Ticket)
+                        setTicket(userInfo as TicketType)
                         setFoundedTicket(true)
                     }
                 })
