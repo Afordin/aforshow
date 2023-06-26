@@ -12,12 +12,12 @@ import '../../public/global.css'
 		<meta name="viewport" content="width=device-width" />
 		<title>AforShow</title>
 	</head>
-	<body class="">
+	<body
+		class="bg-[url('/bg_section.png')] bg-fixed bg-cover bg-center container m-auto"
+	>
 		<Header />
 		<main>
-			<section
-				class="py-16 flex flex-col text-center bg-[url(/bg_section.png)] bg-cover bg-fixed bg-center gap-[5rem]"
-			>
+			<section class="py-16 flex flex-col text-center gap-[5rem]">
 				<h3 class="text-gray-400 text-2xl">Quedan</h3>
 				<Countdown targetDate="2023-07-21T20:00:00" />
 				<h3 class="text-gray-400 text-2xl">
@@ -26,6 +26,15 @@ import '../../public/global.css'
 			</section>
 			<Participantes />
 		</main>
-		<footer></footer>
+		<footer>
+			<h3 class="text-gray-400 text-2xl text-center pb-16">
+				Para estar al tanto de todo unete al <a
+					class="decoration-[#4BC0C8] hover:text-4xl transition-all underline font-extrabold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8]"
+					href="http://"
+					target="_blank"
+					rel="noopener noreferrer">Discord</a
+				>
+			</h3>
+		</footer>
 	</body>
 </html>

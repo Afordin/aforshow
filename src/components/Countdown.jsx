@@ -4,7 +4,9 @@ import { calculateTimeLeft } from '../utils/calculateTimeLeft'
 const CountdownCard = ({ label, time }) => {
     return (
         <div className="text-gray-400  bg-[#141414] p-2 flex flex-col rounded-lg border-t-2 border-gray-500">
-            <span className="font-extrabold text-5xl text-grdient">{time} </span>
+            <span className="font-extrabold text-5xl text-gradient">
+                {time}{' '}
+            </span>
             <span className="">{label}</span>
         </div>
     )
@@ -30,7 +32,7 @@ const Countdown = ({ targetDate }) => {
                     key={index}
                 />
             ))}
-            { timeLeft.length === 0 && <span>En Directo</span> }
+            {timeLeft.length === 0 && <span>En Directo</span>}
         </div>
     )
 }
