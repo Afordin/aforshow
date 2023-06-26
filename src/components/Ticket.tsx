@@ -1,14 +1,21 @@
 // import Atropos library
 import Atropos from 'atropos'
 import { useEffect, useRef, useState } from 'react'
-import { supabase } from '../supabase.js'
+import { useUser } from '../hooks/useUser.js'
+import type { Ticket as TicketType } from '../types/types'
+import { getTicket } from '../utils/ticket.js'
 
+const tickerDefault: TicketType = {
+    num_ticket: '00000',
+    name: '',
+    username_github: 'afor_digital',
+    avatar_url: '/avatar.png',
+}
 export default function Ticket() {
-    const [Logued, setLogued] = useState(
-        localStorage.getItem('sb-bfbnlgbiigcabrdmrjeb-auth-token') != undefined
-    )
+    const { user, Logued, signIn } = useUser()
+
     const ticketEl = useRef(null)
-    const [InfoUserForTicket, setInfoUserForTicket] = useState({})
+    const [ticket, setTicket] = useState<TicketType>(tickerDefault)
     useEffect(() => {
         // Initialize
         const myAtropos = Atropos({
@@ -18,114 +25,26 @@ export default function Ticket() {
             highlight: false,
         })
     }, [])
-    useEffect(() => {
-        if (
-            localStorage.getItem('sb-bfbnlgbiigcabrdmrjeb-auth-token') !=
-                undefined &&
-            !Logued
-        ) {
-            window.location.reload()
-        }
-    }, [])
 
     const onClick = async () => {
-        try {
-            const { data, error } = await supabase.auth.signInWithOAuth({
-                provider: 'github',
-            })
-            if (error) throw new Error('Error al autenticarte con github')
-        } catch (error) {
-            alert(error)
-        }
-    }
-    async function addTicketAfterAuth({ avatar_url, name, user_name }) {
-        return await supabase.from('tickets').insert([
-            {
-                name,
-                username_github: user_name,
-                avatar_url,
-            },
-        ])
+        signIn()
     }
 
-    async function existsTicketForUser({ user_name }) {
-        const data = await supabase
-            .from('tickets')
-            .select('num_ticket')
-            .eq('username_github', user_name)
-        return data.data.length > 0
-    }
-    async function getTicketForUser({ user_name }) {
-        const data = await supabase
-            .from('tickets')
-            .select('num_ticket')
-            .eq('username_github', user_name)
-        return data.data[0].num_ticket
-    }
-    async function checkAndAddTicketAfterAuth({
-        user_name,
-        avatar_url,
-        full_name,
-    }) {
-        const exists = await existsTicketForUser({ user_name })
-        if (!exists) {
-            addTicketAfterAuth({
-                avatar_url,
-                name: full_name,
-                user_name,
-            })
-        }
-    }
     useEffect(() => {
         try {
-            const sessionInfo = JSON.parse(
-                localStorage.getItem('sb-bfbnlgbiigcabrdmrjeb-auth-token')
-            )
-            if (
-                localStorage.getItem('sb-bfbnlgbiigcabrdmrjeb-auth-token') !=
-                undefined
-            ) {
-                const userCompleteInfo = sessionInfo?.user
-                const { avatar_url, full_name, user_name } =
-                    userCompleteInfo?.user_metadata
-                setInfoUserForTicket({ avatar_url, name: full_name, user_name })
-                checkAndAddTicketAfterAuth({
-                    user_name,
-                    avatar_url,
-                    full_name,
-                })
-                ;(async () => {
-                    const numTicket = await getTicketForUser({ user_name })
-                    setInfoUserForTicket({
-                        avatar_url,
-                        name: full_name,
-                        user_name,
-                        numTicket,
+            if (Logued) {
+                getTicket(user)
+                    .then((data) => {
+                        setTicket(data)
                     })
-                })()
-                setLogued(true)
+                    .catch((err) => {
+                        alert(err)
+                    })
             }
         } catch (err) {
             console.log(err)
         }
-    }, [])
-
-    useEffect(() => {
-        const { data: authListener } = supabase.auth.onAuthStateChange(
-            async (event, session) => {
-                // Verificar si el usuario está autenticado
-                if (event === 'SIGNED_IN') {
-                    // Recargar la página
-                    window.location.reload()
-                }
-            }
-        )
-
-        return () => {
-            // Desuscribirse del listener al desmontar el componente
-            authListener.unsubscribe()
-        }
-    }, [])
+    }, [Logued])
 
     return (
         <section className="max-w-[862px] m-auto my-8 relative">
@@ -189,20 +108,13 @@ export default function Ticket() {
                                     <div className="text-center">
                                         <h4> Ticket N°</h4>
                                         <span className="font-bold text-gradient">
-                                            #{InfoUserForTicket.numTicket}
+                                            #{ticket.num_ticket}
                                         </span>
                                     </div>
                                     <div className="text-center">
-                                        <h4>
-                                            {InfoUserForTicket.name
-                                                ? InfoUserForTicket.name
-                                                : 'Sara Montagud'}
-                                        </h4>
+                                        <h4>{ticket.name}</h4>
                                         <span className="font-bold text-gradient">
-                                            @
-                                            {InfoUserForTicket.user_name
-                                                ? InfoUserForTicket.user_name
-                                                : 'afordigital'}
+                                            @{ticket.username_github}
                                         </span>
                                     </div>
                                 </footer>
@@ -210,12 +122,12 @@ export default function Ticket() {
                             <div className="absolute top-12 right-12">
                                 <picture
                                     data-atropos-offset="6"
-                                    class="rounded-full w-[72px] overflow-hidden p-1 gradient inline-block"
+                                    className="rounded-full w-[72px] overflow-hidden p-1 gradient inline-block"
                                 >
                                     <img
-                                        src={InfoUserForTicket.avatar_url}
-                                        alt={`Imagen de usuario`}
-                                        class="w-full rounded-full "
+                                        src={ticket.avatar_url}
+                                        alt={`Imagen de ${ticket.name}`}
+                                        className="w-full rounded-full "
                                     />
                                 </picture>
                             </div>
