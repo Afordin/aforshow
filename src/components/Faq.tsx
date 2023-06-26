@@ -34,7 +34,7 @@ const Faq = () => {
   
 
   return (
-    <div className="py-16 bg-light-blue">
+    <div id="faq" className="py-16 bg-light-blue">
       <div className="flex justify-center items-start">
         <div className="w-full sm:w-10/12 md:w-1/2">
           <h2 className="font-extrabold text-4xl text-transparent bg-clip-text gradient text-center mb-24 mt-18">Preguntas Frecuentes</h2>
