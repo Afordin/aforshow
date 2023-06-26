@@ -210,12 +210,12 @@ export default function Ticket() {
                             <div className="absolute top-12 right-12">
                                 <picture
                                     data-atropos-offset="6"
-                                    class="rounded-full w-[72px] overflow-hidden p-1 gradient inline-block"
+                                    className="rounded-full w-[72px] overflow-hidden p-1 gradient inline-block"
                                 >
                                     <img
                                         src={InfoUserForTicket.avatar_url}
                                         alt={`Imagen de usuario`}
-                                        class="w-full rounded-full "
+                                        className="w-full rounded-full "
                                     />
                                 </picture>
                             </div>
