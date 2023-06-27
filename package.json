@@ -17,6 +17,7 @@
         "@types/react-dom": "^18.2.6",
         "astro": "^2.7.0",
         "atropos": "^1.0.2",
+        "html2canvas": "^1.4.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "tailwindcss": "^3.3.2"

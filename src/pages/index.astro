@@ -11,7 +11,7 @@ import '../../public/global.css'
 	<meta charset="utf-8" />
 	<link rel="icon" type="image/png" href="/icon.png" />
 	<meta name="viewport" content="width=device-width" />
-	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:site" content="@afordigital" />
 	<meta name="twitter:creator" content="@afordigital" />
 	<meta
@@ -22,62 +22,60 @@ import '../../public/global.css'
 		name="twitter:description"
 		content="Aforshow -  Evento de programacion de charlas y talleres para la comunidad"
 	/>
-	<meta
-		property="twitter:image"
-		content={`https://vercel-aforshow.vercel.app/svg_name.svg`}
-	/>
+
 	<meta
 		property="twitter:url"
 		content={`https://vercel-aforshow.vercel.app/`}
 	/>
 	<meta property="twitter:type" content="website" />
 	<meta property="og:type" content="website" />
-</html>
-<meta name="og:card" content="summary_large_image" />
-<meta name="og:site" content="@afordigital" />
-<meta name="og:creator" content="@afordigital" />
-<meta
-	name="og:title"
-	content="Aforshow -  Evento de programacion de charlas y talleres para la comunidad"
-/>
-<meta
-	name="og:description"
-	content="Aforshow -  Evento de programacion de charlas y talleres para la comunidad"
-/>
-<meta
-	property="og:image"
-	content={`https://vercel-aforshow.vercel.app/svg_name.svg`}
-/>
-<meta property="og:url" content={`https://vercel-aforshow.vercel.app/`} />
-<title>AforShow</title>
 
-<body
-	class="bg-[url('/bg_section.png')] bg-fixed bg-cover bg-center container m-auto"
->
-	<Header />
-	<main>
-		<section
-			class="py-16 flex flex-col text-center gap-[5rem]"
-			id="countdown"
-		>
-			<h3 class="text-gray-400 text-2xl">Quedan</h3>
-			<Countdown targetDate="2023-07-21T20:00:00" client:only="react" />
-			<h3 class="text-gray-400 text-2xl">
-				Para el <span class="font-bold">AforShow</span>
-			</h3>
-		</section>
-		<Participantes />
-		<Ticket client:only="react" />
-		<Faq client:only="react" />
-	</main>
-	<footer>
-		<h3 class="text-gray-400 text-2xl text-center pb-16">
-			Para estar al tanto de todo unete al <a
-				class="decoration-[#4BC0C8] hover:text-4xl transition-all underline font-extrabold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8]"
-				href="http://"
-				target="_blank"
-				rel="noopener noreferrer">Discord</a
+	<meta name="og:card" content="summary_large_image" />
+	<meta name="og:site" content="@afordigital" />
+	<meta name="og:creator" content="@afordigital" />
+	<meta
+		name="og:title"
+		content="Aforshow -  Evento de programacion de charlas y talleres para la comunidad"
+	/>
+	<meta
+		name="og:description"
+		content="Aforshow -  Evento de programacion de charlas y talleres para la comunidad"
+	/>
+
+	<meta property="og:url" content={`https://vercel-aforshow.vercel.app/`} />
+	<title>AforShow</title>
+
+	<body
+		class="bg-[url('/bg_section.png')] bg-fixed bg-cover bg-center container m-auto"
+	>
+		<Header />
+		<main>
+			<section
+				class="py-16 flex flex-col text-center gap-[5rem]"
+				id="countdown"
 			>
-		</h3>
-	</footer>
-</body>
+				<h3 class="text-gray-400 text-2xl">Quedan</h3>
+				<Countdown
+					targetDate="2023-07-21T20:00:00"
+					client:only="react"
+				/>
+				<h3 class="text-gray-400 text-2xl">
+					Para el <span class="font-bold">AforShow</span>
+				</h3>
+			</section>
+			<Participantes />
+			<Ticket client:only="react" />
+			<Faq client:only="react" />
+		</main>
+		<footer>
+			<h3 class="text-gray-400 text-2xl text-center pb-16">
+				Para estar al tanto de todo unete al <a
+					class="decoration-[#4BC0C8] hover:text-4xl transition-all underline font-extrabold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8]"
+					href="http://"
+					target="_blank"
+					rel="noopener noreferrer">Discord</a
+				>
+			</h3>
+		</footer>
+	</body>
+</html>

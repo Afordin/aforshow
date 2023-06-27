@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useUser } from '../hooks/useUser.js'
 import type { Ticket as TicketType } from '../types/types'
 import { findDatabase, getTicket } from '../utils/ticket.js'
+import html2canvas from 'html2canvas'
 const urlRedirect =
     import.meta.env.PUBLIC_URL_REDIRECT ||
     'https://tubular-marzipan-aaf90d.netlify.app/'
@@ -51,7 +52,25 @@ export default function Ticket({}) {
     const onClick = async () => {
         signIn()
     }
-    const createTweet = () => {}
+    const createTweet = async () => {
+        let dataURL = 'https://vercel-aforshow.vercel.app/svg_name.svg'
+        const ticketElement = tickeSvgtEl.current
+        html2canvas(ticketElement).then((canvas) => {
+            dataURL = canvas.toDataURL()
+        })
+
+        document.querySelector('head').insertAdjacentHTML(
+            'afterend',
+            `<meta
+        property="twitter:image"
+        content="${dataURL}"
+    />
+    <meta
+        property="og:image"
+        content="${dataURL}"
+    />`
+        )
+    }
 
     useEffect(() => {
         try {
