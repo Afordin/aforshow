@@ -69,7 +69,7 @@ export default function Ticket({}) {
     }, [Logued])
 
     return (
-        <section className="max-w-[862px] m-auto my-8 relative">
+        <section className="max-w-[862px] m-auto my-8 relative" id="ticket">
             <meta
                 property="og:title"
                 content={`Aforshow -  Evento de programacion de charlas y talleres para la comunidad`}
