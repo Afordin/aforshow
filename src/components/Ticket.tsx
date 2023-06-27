@@ -87,6 +87,7 @@ export default function Ticket({}) {
                 property="twitter:url"
                 content={`https://vercel-aforshow.vercel.app/`}
             />
+            <meta property="og:type" content="website"></meta>
             <h2 className="font-extrabold text-4xl text-gradient text-center mb-24">
                 {' '}
                 Ticket
