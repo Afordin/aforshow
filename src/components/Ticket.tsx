@@ -43,7 +43,19 @@ export default function Ticket({}) {
                 .then((userInfo) => {
                     if (userInfo.username_github == params.get('username')) {
                         setTicket(userInfo as TicketType)
-                        console.log(ticket)
+                        const ticketElement = tickeSvgtEl.current
+                        if (ticketElement) {
+                            document.querySelector('head').innerHTML =
+                                document.querySelector('head').innerHTML +
+                                `<meta
+        property="twitter:image"
+        content="${ticket.avatar_url}"
+    />
+    <meta
+        property="og:image"
+        content="${ticket.avatar_url}"
+    />`
+                        }
                         setFoundedTicket(true)
                     }
                 })
@@ -60,29 +72,7 @@ export default function Ticket({}) {
             }`
         )
     }
-    useEffect(() => {
-        const ticketElement = tickeSvgtEl.current
-        let dataURL = window.location.href + 'svg_name.svg'
-        if (ticketElement) {
-            html2canvas(ticketElement).then((canvas) => {
-                dataURL = canvas.toDataURL('image/png')
-                console.log(dataURL)
-                document.querySelector('head').innerHTML =
-                    document.querySelector('head').innerHTML +
-                    `<meta
-            property="twitter:image"
-            content="${ticket.avatar_url || `${urlRedirect}/avatar.png`}"
-        />
-        <meta
-            property="og:image"
-            content="${
-                ticket.avatar_url || `${window.location.origin}/avatar.png`
-            }"
-        />`
-            })
-            setOGImageAdded(true)
-        }
-    }, [])
+    useEffect(() => {}, [])
 
     useEffect(() => {
         try {
@@ -90,6 +80,19 @@ export default function Ticket({}) {
                 getTicket(user)
                     .then((data) => {
                         setTicket(data)
+                        const ticketElement = tickeSvgtEl.current
+                        if (ticketElement) {
+                            document.querySelector('head').innerHTML =
+                                document.querySelector('head').innerHTML +
+                                `<meta
+        property="twitter:image"
+        content="${ticket.avatar_url}"
+    />
+    <meta
+        property="og:image"
+        content="${ticket.avatar_url}"
+    />`
+                        }
                     })
                     .catch((err) => {
                         alert(err)
