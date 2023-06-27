@@ -1,6 +1,6 @@
 // import Atropos library
 import Atropos from 'atropos'
-import { saveAs } from 'file-saver'
+import fileSaver from 'file-saver'
 import { useEffect, useRef, useState } from 'react'
 import { useUser } from '../hooks/useUser.js'
 import type { Ticket as TicketType } from '../types/types'
@@ -72,7 +72,10 @@ export default function Ticket({}) {
             }).then((canvas) => {
                 const imgData = canvas.toDataURL('image/png')
                 const blob = dataURLToBlob(imgData)
-                saveAs(blob, `Ticket de @${ticket.username_github}.png`)
+                fileSaver.saveAs(
+                    blob,
+                    `Ticket de @${ticket.username_github}.png`
+                )
             })
         }
     }
