@@ -66,32 +66,13 @@ export default function Ticket({}) {
     }
     const createTweet = () => {
         if (tickeSvgtEl.current) {
-            html2canvas(tickeSvgtEl.current).then((canvas) => {
+            html2canvas(tickeSvgtEl.current, {
+                useCORS: true,
+                allowTaint: true,
+            }).then((canvas) => {
                 const imgData = canvas.toDataURL('image/png')
                 const blob = dataURLToBlob(imgData)
-
-                // Crear una URL temporal para la imagen
-                const imageUrl = URL.createObjectURL(blob)
-
-                // Copiar la URL de la imagen al portapapeles
-                navigator.clipboard
-                    .writeText(imageUrl)
-                    .then(() => {
-                        // Limpiar la URL temporal después de copiarla
-                        URL.revokeObjectURL(imageUrl)
-
-                        // Informar al usuario que se ha copiado la imagen
-                        alert(
-                            'La imagen se ha copiado correctamente al portapapeles.'
-                        )
-                    })
-                    .catch((error) => {
-                        console.error(
-                            'Error al copiar la imagen al portapapeles:',
-                            error
-                        )
-                        // Manejar el error en caso de que no se pueda copiar la imagen al portapapeles
-                    })
+                saveAs(blob, `Ticket de @${ticket.username_github}.png`)
             })
         }
     }
@@ -212,7 +193,8 @@ export default function Ticket({}) {
                         rel="noopener noreferrer"
                         className="p-4 text-white text-lg md:text-2xl bg-blue-600 font-extrabold rounded-full border-4 hover:border-blue-600 hover:text-black hover:bg-white transition-all"
                     >
-                        Comparte tu ticket por Twitter
+                        Descarg tu ticket para que lo compartas en tus redes
+                        sociales
                     </button>
                 )}
             </div>
