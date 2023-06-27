@@ -7,8 +7,7 @@ import type { Ticket as TicketType } from '../types/types'
 import { findDatabase, getTicket } from '../utils/ticket.js'
 import html2canvas from 'html2canvas'
 const urlRedirect =
-    import.meta.env.PUBLIC_URL_REDIRECT ||
-    'https://tubular-marzipan-aaf90d.netlify.app/'
+    import.meta.env.PUBLIC_URL_REDIRECT || 'https://aforshow.vercel.app/'
 const tickerDefault: TicketType = {
     num_ticket: '00000',
     name: '',
@@ -44,6 +43,7 @@ export default function Ticket({}) {
                 .then((userInfo) => {
                     if (userInfo.username_github == params.get('username')) {
                         setTicket(userInfo as TicketType)
+                        console.log(ticket)
                         setFoundedTicket(true)
                     }
                 })
@@ -71,9 +71,7 @@ export default function Ticket({}) {
                     document.querySelector('head').innerHTML +
                     `<meta
             property="twitter:image"
-            content="${
-                ticket.avatar_url || `${window.location.origin}/avatar.png`
-            }"
+            content="${ticket.avatar_url || `${urlRedirect}/avatar.png`}"
         />
         <meta
             property="og:image"
