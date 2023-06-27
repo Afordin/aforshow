@@ -1,5 +1,6 @@
 // import Atropos library
 import Atropos from 'atropos'
+import { saveAs } from 'file-saver'
 import { useEffect, useRef, useState } from 'react'
 import { useUser } from '../hooks/useUser.js'
 import type { Ticket as TicketType } from '../types/types'
@@ -70,23 +71,16 @@ export default function Ticket({}) {
 
     return (
         <section className="max-w-[862px] m-auto my-8 relative" id="ticket">
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:site" content="@afordigital" />
+            <meta name="twitter:creator" content="@afordigital" />
             <meta
-                property="og:title"
-                content={`Aforshow -  Evento de programacion de charlas y talleres para la comunidad`}
+                name="twitter:title"
+                content="Aforshow -  Evento de programacion de charlas y talleres para la comunidad"
             />
             <meta
-                property="og:description"
-                content={`Ticket para la Aforshow`}
-            />
-            <meta property="og:image" content={`${urlRedirect}/svg_name.svg`} />
-            <meta property="og:url" content={`${urlRedirect}`} />
-            <meta
-                property="twitter:title"
-                content={`Aforshow -  Evento de programacion de charlas y talleres para la comunidad`}
-            />
-            <meta
-                property="twitter:description"
-                content={`Ticket para la Aforshow`}
+                name="twitter:description"
+                content="Aforshow -  Evento de programacion de charlas y talleres para la comunidad"
             />
             <meta property="twitter:image" content={`/svg_name.svg`} />
             <meta property="twitter:url" content={`/`} />
