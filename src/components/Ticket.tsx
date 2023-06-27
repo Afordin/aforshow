@@ -43,19 +43,6 @@ export default function Ticket({}) {
                 .then((userInfo) => {
                     if (userInfo.username_github == params.get('username')) {
                         setTicket(userInfo as TicketType)
-                        const ticketElement = tickeSvgtEl.current
-                        if (ticketElement) {
-                            document.querySelector('head').innerHTML =
-                                document.querySelector('head').innerHTML +
-                                `<meta
-        property="twitter:image"
-        content="${userInfo.avatar_url}"
-    />
-    <meta
-        property="og:image"
-        content="${userInfo.avatar_url}"
-    />`
-                        }
                         setFoundedTicket(true)
                     }
                 })
@@ -65,12 +52,48 @@ export default function Ticket({}) {
     const onClick = async () => {
         signIn()
     }
-    const createTweet = async () => {
-        window.open(
-            `https://twitter.com/intent/tweet?text=${'adsada'}&url=${
-                window.location.origin + '?username=' + ticket.username_github
-            }`
-        )
+    function dataURLToBlob(dataURL) {
+        const parts = dataURL.split(';base64,')
+        const contentType = parts[0].split(':')[1]
+        const byteCharacters = atob(parts[1])
+        const byteArrays = []
+
+        for (let i = 0; i < byteCharacters.length; i++) {
+            byteArrays.push(byteCharacters.charCodeAt(i))
+        }
+
+        return new Blob([new Uint8Array(byteArrays)], { type: contentType })
+    }
+    const createTweet = () => {
+        if (tickeSvgtEl.current) {
+            html2canvas(tickeSvgtEl.current).then((canvas) => {
+                const imgData = canvas.toDataURL('image/png')
+                const blob = dataURLToBlob(imgData)
+
+                // Crear una URL temporal para la imagen
+                const imageUrl = URL.createObjectURL(blob)
+
+                // Copiar la URL de la imagen al portapapeles
+                navigator.clipboard
+                    .writeText(imageUrl)
+                    .then(() => {
+                        // Limpiar la URL temporal después de copiarla
+                        URL.revokeObjectURL(imageUrl)
+
+                        // Informar al usuario que se ha copiado la imagen
+                        alert(
+                            'La imagen se ha copiado correctamente al portapapeles.'
+                        )
+                    })
+                    .catch((error) => {
+                        console.error(
+                            'Error al copiar la imagen al portapapeles:',
+                            error
+                        )
+                        // Manejar el error en caso de que no se pueda copiar la imagen al portapapeles
+                    })
+            })
+        }
     }
     useEffect(() => {}, [])
 
@@ -81,18 +104,6 @@ export default function Ticket({}) {
                     .then((data) => {
                         setTicket(data)
                         const ticketElement = tickeSvgtEl.current
-                        if (ticketElement) {
-                            document.querySelector('head').innerHTML =
-                                document.querySelector('head').innerHTML +
-                                `<meta
-        property="twitter:image"
-        content="${data.avatar_url}?s=400"
-    />
-    <meta
-        property="og:image"
-        content="${data.avatar_url}?s=400"
-    />`
-                        }
                     })
                     .catch((err) => {
                         alert(err)
@@ -148,9 +159,7 @@ export default function Ticket({}) {
                                     className=" h-[17px] justify-start items-center gap-4 inline-flex py-12"
                                 >
                                     <div>
-                                        <span className=" font-bold text-gradient">
-                                            21
-                                        </span>
+                                        <span className=" font-bold ">21</span>
                                         <span className="font-bold">
                                             {' '}
                                             de Julio
@@ -167,13 +176,13 @@ export default function Ticket({}) {
                                 >
                                     <div className="text-center">
                                         <h4> Ticket N°</h4>
-                                        <span className="font-bold text-gradient">
+                                        <span className="font-bold ">
                                             #{ticket.num_ticket}
                                         </span>
                                     </div>
                                     <div className="text-center">
                                         <h4>{ticket.name}</h4>
-                                        <span className="font-bold text-gradient">
+                                        <span className="font-bold ">
                                             @{ticket.username_github}
                                         </span>
                                     </div>
