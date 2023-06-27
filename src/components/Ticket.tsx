@@ -71,11 +71,15 @@ export default function Ticket({}) {
                     document.querySelector('head').innerHTML +
                     `<meta
             property="twitter:image"
-            content="${dataURL}"
+            content="${
+                ticket.avatar_url || `${window.location.origin}/avatar.png`
+            }"
         />
         <meta
             property="og:image"
-            content="${dataURL}"
+            content="${
+                ticket.avatar_url || `${window.location.origin}/avatar.png`
+            }"
         />`
             })
             setOGImageAdded(true)
