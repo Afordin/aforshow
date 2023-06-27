@@ -7,6 +7,10 @@ const menu: MenuLink[] = [
         anchor: '#inicio',
     },
     {
+        name: 'Cuenta atras',
+        anchor: '#countdown',
+    },
+    {
         name: 'Participantes',
         anchor: '#participantes',
     },

@@ -19,7 +19,10 @@ import '../../public/global.css'
 	>
 		<Header />
 		<main>
-			<section class="py-16 flex flex-col text-center gap-[5rem]">
+			<section
+				class="py-16 flex flex-col text-center gap-[5rem]"
+				id="countdown"
+			>
 				<h3 class="text-gray-400 text-2xl">Quedan</h3>
 				<Countdown
 					targetDate="2023-07-21T20:00:00"
@@ -32,7 +35,6 @@ import '../../public/global.css'
 			<Participantes />
 			<Ticket client:only="react" />
 			<Faq client:only="react" />
-
 		</main>
 		<footer>
 			<h3 class="text-gray-400 text-2xl text-center pb-16">
