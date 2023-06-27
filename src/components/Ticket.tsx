@@ -18,6 +18,7 @@ const tickerDefault: TicketType = {
 
 export default function Ticket({}) {
     const [FoundedTicket, setFoundedTicket] = useState(false)
+    const [OGImageAdded, setOGImageAdded] = useState(false)
     const { user, Logued, signIn } = useUser()
 
     const ticketEl = useRef(null)
@@ -53,24 +54,33 @@ export default function Ticket({}) {
         signIn()
     }
     const createTweet = async () => {
-        let dataURL = 'https://vercel-aforshow.vercel.app/svg_name.svg'
-        const ticketElement = tickeSvgtEl.current
-        html2canvas(ticketElement).then((canvas) => {
-            dataURL = canvas.toDataURL()
-        })
-
-        document.querySelector('head').insertAdjacentHTML(
-            'afterend',
-            `<meta
-        property="twitter:image"
-        content="${dataURL}"
-    />
-    <meta
-        property="og:image"
-        content="${dataURL}"
-    />`
+        window.open(
+            `https://twitter.com/intent/tweet?text=${'adsada'}&url=${
+                window.location.origin + '?username=' + ticket.username_github
+            }`
         )
     }
+    useEffect(() => {
+        const ticketElement = tickeSvgtEl.current
+        let dataURL = window.location.href + 'svg_name.svg'
+        if (ticketElement) {
+            html2canvas(ticketElement).then((canvas) => {
+                dataURL = canvas.toDataURL('image/png')
+                console.log(dataURL)
+                document.querySelector('head').innerHTML =
+                    document.querySelector('head').innerHTML +
+                    `<meta
+            property="twitter:image"
+            content="${dataURL}"
+        />
+        <meta
+            property="og:image"
+            content="${dataURL}"
+        />`
+            })
+            setOGImageAdded(true)
+        }
+    }, [])
 
     useEffect(() => {
         try {
