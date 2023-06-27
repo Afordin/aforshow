@@ -5,6 +5,20 @@ export interface Participant {
     img: string
     descrition: string
 }
+
+export interface User {
+    name: string
+    email: string
+    avatar: string
+    userName: string
+}
+
+export interface Ticket {
+    num_ticket: string
+    name: string
+    avatar_url: string
+    username_github: string
+}
 export type Json =
     | string
     | number
@@ -16,6 +30,11 @@ export type Json =
 export interface Faq {
     question: string
     answer: string
+}
+
+export interface MenuLink {
+    name: string,
+    anchor: string
 }
 
 export interface Database {}
