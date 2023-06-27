@@ -195,7 +195,7 @@ export default function Ticket({}) {
                 </div>
             </div>
             <div className="m-auto text-center my-4">
-                {Logued && (
+                {(Logued || FoundedTicket) && (
                     <button
                         type="button"
                         onClick={createTweet}
