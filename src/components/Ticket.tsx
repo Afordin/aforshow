@@ -49,11 +49,11 @@ export default function Ticket({}) {
                                 document.querySelector('head').innerHTML +
                                 `<meta
         property="twitter:image"
-        content="${ticket.avatar_url}"
+        content="${userInfo.avatar_url}"
     />
     <meta
         property="og:image"
-        content="${ticket.avatar_url}"
+        content="${userInfo.avatar_url}"
     />`
                         }
                         setFoundedTicket(true)
@@ -86,11 +86,11 @@ export default function Ticket({}) {
                                 document.querySelector('head').innerHTML +
                                 `<meta
         property="twitter:image"
-        content="${ticket.avatar_url}"
+        content="${data.avatar_url}"
     />
     <meta
         property="og:image"
-        content="${ticket.avatar_url}"
+        content="${data.avatar_url}"
     />`
                         }
                     })
