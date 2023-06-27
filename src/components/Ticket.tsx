@@ -86,11 +86,11 @@ export default function Ticket({}) {
                                 document.querySelector('head').innerHTML +
                                 `<meta
         property="twitter:image"
-        content="${data.avatar_url}"
+        content="${data.avatar_url}?s=400"
     />
     <meta
         property="og:image"
-        content="${data.avatar_url}"
+        content="${data.avatar_url}?s=400"
     />`
                         }
                     })
