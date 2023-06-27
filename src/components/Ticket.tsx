@@ -186,7 +186,7 @@ export default function Ticket({}) {
                         type="button"
                         onClick={createTweet}
                         rel="noopener noreferrer"
-                        className="p-4 text-white text-2xl bg-blue-600 font-extrabold rounded-full border-4 hover:border-blue-600 hover:text-black hover:bg-white transition-all"
+                        className="p-4 text-white text-lg md:text-2xl bg-blue-600 font-extrabold rounded-full border-4 hover:border-blue-600 hover:text-black hover:bg-white transition-all"
                     >
                         Comparte tu ticket por Twitter
                     </button>
