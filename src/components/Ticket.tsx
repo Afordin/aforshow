@@ -82,12 +82,35 @@ export default function Ticket({}) {
                 name="twitter:description"
                 content="Aforshow -  Evento de programacion de charlas y talleres para la comunidad"
             />
-            <meta property="twitter:image" content={`/svg_name.svg`} />
+            <meta
+                property="twitter:image"
+                content={`https://vercel-aforshow.vercel.app/svg_name.svg`}
+            />
             <meta
                 property="twitter:url"
                 content={`https://vercel-aforshow.vercel.app/`}
             />
+            <meta property="twitter:type" content="website"></meta>
             <meta property="og:type" content="website"></meta>
+            <meta name="og:card" content="summary_large_image" />
+            <meta name="og:site" content="@afordigital" />
+            <meta name="og:creator" content="@afordigital" />
+            <meta
+                name="og:title"
+                content="Aforshow -  Evento de programacion de charlas y talleres para la comunidad"
+            />
+            <meta
+                name="og:description"
+                content="Aforshow -  Evento de programacion de charlas y talleres para la comunidad"
+            />
+            <meta
+                property="og:image"
+                content={`https://vercel-aforshow.vercel.app/svg_name.svg`}
+            />
+            <meta
+                property="og:url"
+                content={`https://vercel-aforshow.vercel.app/`}
+            />
             <h2 className="font-extrabold text-4xl text-gradient text-center mb-24">
                 {' '}
                 Ticket
