@@ -37,8 +37,8 @@ const Faq = () => {
     <div id="faq" className="py-16 bg-light-blue">
       <div className="flex justify-center items-start">
         <div className="w-full sm:w-10/12 md:w-1/2">
-          <h2 className="font-extrabold text-4xl text-transparent bg-clip-text gradient text-center mb-24 mt-18">Preguntas Frecuentes</h2>
-          <ul className="flex flex-col">
+          <h2 className="font-extrabold px-10 text-4xl text-transparent bg-clip-text gradient text-center mb-24 mt-18">Preguntas Frecuentes</h2>
+          <ul className="flex flex-col px-10">
             { faq.map((item, index) => {
               return (
               <li key={ index } className={`my-2 shadow-lg border-2 border-transparent gradient rounded ${openFaq}`} onClick={() => handleFaq(index)}>
