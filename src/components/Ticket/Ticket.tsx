@@ -136,11 +136,10 @@ export default function Ticket({}) {
                         alert(
                             'Se ha copiado la imagen de tu ticket en tu portapapeles, al abrir el tweet pegas la imagen...'
                         )
-                        const tweetText = `¡Estoy emocionado! 
-                        ¡Acabo de obtener una entrada para el increíble evento de @afor_digital en Twitch! 🎉👨‍💻 
-                        No puedo esperar para sumergirme en charlas y talleres de programación de primer nivel en el #AforShow. 
-                        ¡Únete a mí y descubre las últimas tendencias en el mundo de la tecnología! 💡✨ 
-                        ¡Consigue tu entrada aquí: https://afor.show/! #Programación #ComunidadTech`
+                        const tweetText = `¡Estoy emocionado! ¡Acabo de asegurar mi entrada para el increíble #AforShow en Twitch! 🎉👩‍💻👨‍💻 
+                        No puedo esperar para sumergirme en las charlas y talleres de programación más inspiradores. 
+                        Únete a mí en esta experiencia épica ➡️ https://afor.show/ 
+                        #DesarrolloDigital`
                         const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
                             tweetText
                         )}`
