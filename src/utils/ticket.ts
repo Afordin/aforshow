@@ -20,8 +20,17 @@ export async function getTicket(user: User): Promise<Ticket> {
                 throw 'error al obtener el ticket'
             }
         }
-        localStorage.setItem('ticket', JSON.stringify(data.data))
-        return data.data as Ticket
+        const { username_github, avatar_url, name, num_ticket } =
+            data.data as Ticket
+        const newTicket: Ticket = {
+            username_github,
+            avatar_url,
+            name,
+            num_ticket: num_ticket.toString().padStart(5, '0'),
+        }
+
+        localStorage.setItem('ticket', JSON.stringify(newTicket))
+        return newTicket
     } catch (e) {
         throw e
     }
