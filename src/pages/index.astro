@@ -15,15 +15,22 @@ import '../../public/global.css'
 		const username = searchParams.get('username') || ''
 		document.querySelector('head').insertAdjacentHTML(
 			'afterend',
-			`<meta
+			`
+			<meta
+		name="title"
+		content="${
+			username != '' ? `Ticket de @${username}` : 'Aforshow'
+		} -  Evento de programacion de charlas y talleres para la comunidad"
+	/><meta
 		name="twitter:title"
 		content="${
 			username != '' ? `Ticket de @${username}` : 'Aforshow'
 		} -  Evento de programacion de charlas y talleres para la comunidad"
 	/>
 	<meta
-		name="twitter:description"
-		content="Aforshow -  Evento de programacion de charlas y talleres para la comunidad"
+		name="twitter:description"${
+			username != '' ? `Ticket de @${username}` : 'Aforshow'
+		} -  Evento de programacion de charlas y talleres para la comunidad"
 	/>
 	<meta name="og:image" content="https://bfbnlgbiigcabrdmrjeb.supabase.co/storage/v1/object/public/Tickets%20Images/Ticket-de-@${username}.png" />
 	<meta name="twitter:image" content="https://bfbnlgbiigcabrdmrjeb.supabase.co/storage/v1/object/public/Tickets%20Images/Ticket-de-@${username}.png" />
