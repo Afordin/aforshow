@@ -1,5 +1,9 @@
-export function calculateTimeLeft(targetDate) {
-    const difference = new Date(targetDate) - new Date()
+import { getLocalTime } from './getLocalTime'
+
+export function calculateTimeLeft() {
+    const { fulltime } = getLocalTime()
+    const difference = new Date(fulltime) - new Date()
+
     let timeLeft = []
 
     if (difference > 0) {
