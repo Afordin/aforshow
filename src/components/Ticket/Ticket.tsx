@@ -9,6 +9,7 @@ import html2canvas from 'html2canvas'
 import TicketDektop from './TicketDesktop.js'
 import TicketMovil from './TicketMovil.js'
 import TicketShare from './TicketShare.js'
+import { supabase } from '../../utils/supebase.js'
 const tickerDefault: TicketType = {
     num_ticket: '00000',
     name: '',
@@ -18,7 +19,7 @@ const tickerDefault: TicketType = {
 
 export default function Ticket({}) {
     const [FoundedTicket, setFoundedTicket] = useState(false)
-    const [OGImageAdded, setOGImageAdded] = useState(false)
+    const [ImageUrlBlob, setImageUrlBlob] = useState('')
     const { user, Logued, signIn } = useUser()
 
     const ticketEl = useRef(null)
@@ -44,6 +45,58 @@ export default function Ticket({}) {
                 .then((userInfo) => {
                     if (userInfo.username_github == params.get('username')) {
                         setTicket(userInfo as TicketType)
+                        if (tickeSvgtEl.current) {
+                            html2canvas(tickeSvgtEl.current, {
+                                useCORS: true,
+                                allowTaint: true,
+                            }).then(async (canvas) => {
+                                const imgData = canvas.toDataURL('image/png')
+
+                                const { data, error } = await supabase.storage
+                                    .from('Tickets Images')
+                                    .getPublicUrl(
+                                        `Ticket-de-@${userInfo.username_github}.png`
+                                    )
+
+                                if (error) {
+                                    console.error(
+                                        'Error al verificar la existencia de la imagen:',
+                                        error.message
+                                    )
+                                } else {
+                                    if (data.publicUrl) {
+                                        // La imagen no existe, realizar la subida
+                                        const response = await fetch(imgData)
+                                        const blob = await response.blob()
+
+                                        const {
+                                            data: uploadData,
+                                            error: uploadError,
+                                        } = await supabase.storage
+                                            .from('Tickets Images')
+                                            .upload(
+                                                `Ticket-de-@${userInfo.username_github}.png`,
+                                                blob
+                                            )
+
+                                        if (uploadError) {
+                                            console.error(
+                                                'Error al subir la imagen:',
+                                                uploadError.message
+                                            )
+                                        } else {
+                                            console.log(
+                                                'La imagen se ha subido correctamente.'
+                                            )
+                                        }
+                                    } else {
+                                        console.log(
+                                            'La imagen ya existe en el almacenamiento de Supabase.'
+                                        )
+                                    }
+                                }
+                            })
+                        }
                         setFoundedTicket(true)
                     }
                 })
@@ -66,37 +119,17 @@ export default function Ticket({}) {
         return new Blob([new Uint8Array(byteArrays)], { type: contentType })
     }
     const createTweet = () => {
-        if (tickeSvgtEl.current) {
-            html2canvas(tickeSvgtEl.current, {
-                useCORS: true,
-                allowTaint: true,
-            }).then(async (canvas) => {
-                const imgData = canvas.toDataURL('image/png')
-                const blob = dataURLToBlob(imgData)
-                navigator.clipboard
-                    .write([
-                        new ClipboardItem({
-                            [blob.type]: blob,
-                        }),
-                    ])
-                    .then(() => {
-                        alert(
-                            'Se ha copiado la imagen de tu ticket en tu portapapeles, al abrir el tweet pegas la imagen...'
-                        )
-                        const tweetText = `¡Estoy emocionado! 
-                        ¡Acabo de obtener una entrada para el increíble evento de @afor_digital en Twitch! 🎉👨‍💻 
-                        No puedo esperar para sumergirme en charlas y talleres de programación de primer nivel en el #AforShow. 
-                        ¡Únete a mí y descubre las últimas tendencias en el mundo de la tecnología! 💡✨ 
-                        ¡Consigue tu entrada aquí: https://afor.show/! #Programación #ComunidadTech`
-                        const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                            tweetText
-                        )}`
-                        window.open(tweetUrl, '_blank')
-                    })
-            })
-        }
+        const tweetText = `¡Estoy emocionado! ¡Conseguí una entrada para el increíble #AforShow de @afor_digital en Twitch! 🎉👨‍💻 Charlas y talleres de programación que no te puedes perder. Únete a mí en este evento épico. ¡Regístrate aquí!`
+        const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+            tweetText
+        )}&url=https://afor.show/?username=${ticket.username_github}`
+        window.open(tweetUrl, '_blank')
     }
-    useEffect(() => {}, [])
+    useEffect(() => {
+        const checkImageExists = async () => {}
+
+        checkImageExists()
+    }, [])
 
     useEffect(() => {
         try {
