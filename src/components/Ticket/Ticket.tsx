@@ -120,9 +120,13 @@ export default function Ticket({}) {
     }
     const createTweet = () => {
         if (tickeSvgtEl.current) {
+            tickeSvgtEl.current.style.width = 'fit-content'
+            tickeSvgtEl.current.style.height = 'fit-content'
             html2canvas(tickeSvgtEl.current, {
                 useCORS: true,
                 allowTaint: true,
+                backgroundColor: null, // Fondo transparente
+                scale: 2,
             }).then(async (canvas) => {
                 const imgData = canvas.toDataURL('image/png')
                 const blob = dataURLToBlob(imgData)
@@ -136,10 +140,9 @@ export default function Ticket({}) {
                         alert(
                             'Se ha copiado la imagen de tu ticket en tu portapapeles, al abrir el tweet pegas la imagen...'
                         )
-                        const tweetText = `¡Estoy emocionado! ¡Acabo de asegurar mi entrada para el increíble #AforShow en Twitch! 🎉👩‍💻👨‍💻 
-                        No puedo esperar para sumergirme en las charlas y talleres de programación más inspiradores. 
-                        Únete a mí en esta experiencia épica ➡️ https://afor.show/ 
-                        #DesarrolloDigital`
+                        tickeSvgtEl.current.style.width = '100%'
+                        tickeSvgtEl.current.style.height = '100%'
+                        const tweetText = `¡Estoy emocionado! ¡Acabo de asegurar mi entrada para el increíble #AforShow en Twitch! 🎉👩‍💻👨‍💻No puedo esperar para sumergirme en las charlas y talleres de programación más inspiradores.Únete a esta experiencia épica ➡️ https://afor.show/ #DesarrolloDigital`
                         const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
                             tweetText
                         )}`
