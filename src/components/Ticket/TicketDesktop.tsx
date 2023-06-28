@@ -26,7 +26,7 @@ export default function TicketDektop({ ticket }: Props) {
                             data-atropos-offset="4"
                             className=" h-[17px] justify-start items-center gap-4 inline-flex py-12"
                         >
-                            <div>
+                            <div className="whitespace-nowrap">
                                 <span className=" font-bold">21</span>
                                 <span className="font-bold"> de Julio</span>
                             </div>
@@ -46,7 +46,7 @@ export default function TicketDektop({ ticket }: Props) {
                                 </span>
                             </div>
                             <div className="text-center">
-                                <h4 className="min-h-[1.6rem]">
+                                <h4 className="min-h-[1.6rem] whitespace-nowrap">
                                     {ticket.name}
                                 </h4>
                                 <span className="font-bold ">
