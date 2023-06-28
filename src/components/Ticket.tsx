@@ -107,7 +107,7 @@ export default function Ticket({}) {
             {!Logued && !FoundedTicket && (
                 <button
                     ref={ticketEl}
-                    className="font-extrabold text-4xl border-4 border-black p-4 bg-orange-400 hover:text-white hover:border-orange-400 hover:bg-black transition-all rounded-full absolute top-[55%] left-[30%] z-[200]"
+                    className="font-extrabold sm:text-4xl text-2sxl border-4 border-black p-4 bg-orange-400 hover:text-white hover:border-orange-400 hover:bg-black transition-all rounded-full absolute top-[55%] left-[20%] z-[200] md:left-[30%] sm:left-[30%] "
                     type="button"
                     onClick={onClick}
                 >
@@ -123,34 +123,34 @@ export default function Ticket({}) {
             >
                 <div className="atropos-scale">
                     <div className="atropos-rotate">
-                        <div className="atropos-inner relative">
+                        <div className="atropos-inner relative  ">
                             <img src="/ticket.svg"></img>
-                            <div className="absolute top-12 left-1/2 -translate-x-1/2 text-2xl text-neutral-200 w-[520px] ">
+                            <div className="absolute  top-[20%] sm:top-6  md:top-12 left-1/2 -translate-x-1/2  text-neutral-200   sm:text-2xl text-xs sm:w-[520px] w-[300px] ">
                                 <header data-atropos-offset="2">
                                     <img
                                         src={'/stars_logo.svg'}
                                         alt="Stars"
-                                        className="m-auto w-32"
+                                        className=" w-10 sm:w-20 md:w-32 m-auto "
                                     />
                                     <img
                                         src={'/svg_name.svg'}
                                         alt="Event name"
-                                        className="m-auto w-64 pt-8"
+                                        className="  w-20  sm:w-40  md:w-52  lg:w-64  pt-1 sm:pt-8 md:pt-3  m-auto"
                                     />
                                 </header>
                                 <div
                                     data-atropos-offset="4"
-                                    className=" h-[17px] justify-start items-center gap-4 inline-flex py-12"
+                                    className=" sm:h-[17px] h-[30px] justify-start items-center gap-4 inline-flex  lg:py-12  md:py-10 sm:py-9  py-1"
                                 >
                                     <div>
-                                        <span className=" font-bold ">21</span>
-                                        <span className="font-bold">
+                                        <span className=" font-bold  ">21</span>
+                                        <span className="font-bold  ">
                                             {' '}
                                             de Julio
                                         </span>
                                     </div>
-                                    <div className="w-4 h-4 gradient rounded-full" />
-                                    <div className="text-neutral-600  font-normal">
+                                    <div className="sm:w-4 sm:h-4  w-2 h-2 gradient rounded-full" />
+                                    <div className="text-neutral-600  font-normal ">
                                         Twitch.tv/afor_digital
                                     </div>
                                 </div>
@@ -158,24 +158,24 @@ export default function Ticket({}) {
                                     data-atropos-offset="10"
                                     className="flex justify-between items-center "
                                 >
-                                    <div className="text-center">
+                                    <div className="text-center ">
                                         <h4> Ticket N°</h4>
-                                        <span className="font-bold ">
+                                        <span className="font-bold  ">
                                             #{ticket.num_ticket}
                                         </span>
                                     </div>
                                     <div className="text-center">
                                         <h4>{ticket.name}</h4>
-                                        <span className="font-bold ">
+                                        <span className="font-bold  ">
                                             @{ticket.username_github}
                                         </span>
                                     </div>
                                 </footer>
                             </div>
-                            <div className="absolute top-12 right-12">
+                            <div className="absolute  top-4 right-6 sm:top-12 sm:right-12  ">
                                 <picture
                                     data-atropos-offset="6"
-                                    className="rounded-full w-[72px] overflow-hidden p-1 gradient inline-block"
+                                    className="rounded-full sm:w-[72px] w-[50px] overflow-hidden sm:p-1 p-[2px] gradient inline-block"
                                 >
                                     <img
                                         src={ticket.avatar_url}
@@ -194,12 +194,12 @@ export default function Ticket({}) {
                         type="button"
                         onClick={createTweet}
                         rel="noopener noreferrer"
-                        className="p-4 text-white text-sm md:text-xl bg-blue-600 font-extrabold rounded-full border-4 hover:border-blue-600 hover:text-black hover:bg-white transition-all"
+                        className="p-4 text-white text-[8px] md:text-xl bg-blue-600 font-extrabold rounded-full sm:border-4 border-2 hover:border-blue-600 hover:text-black hover:bg-white transition-all"
                     >
                         Descarga tu ticket para que lo compartas en tus redes
                         sociales
                     </button>
-                )}
+                )}{' '}
             </div>
         </section>
     )
