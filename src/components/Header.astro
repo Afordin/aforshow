@@ -42,29 +42,27 @@ const { day, monthName, time } = getLocalTime()
 
                     <span class="text-gray-500 capitalize">{time} Hs</span>
                 </span>
-
-                <div class="relative flex w-[80%] md:w-[30%] mx-auto mt-4">
-                    <a
-                        href="https://docs.google.com/forms/d/e/1FAIpQLSfOnnrFperV87C10Mk_jNWuaxZY60VS11_G7sKmxp1MrE0mAQ/viewform?pli=1"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="m-auto text-center rounded-xl w-full transition-all p-[2px] gradient hover:scale-105 hover:[&>div>div]:text-black"
-                    >
-                        <div
-                            class="flex flex-col justify-between h-full bg-black hover:bg-transparent rounded-lg p-2"
-                        >
-                            <div
-                                class="flex flex-col justify-center text-white"
-                            >
-                                <span class="font-bold">
-                                    Postulate para dar una charla o un taller
-                                </span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
             </h3>
-            <BackToTop client:only="react" />
+            <div class="relative flex w-[80%] md:w-[30%] mx-auto mt-4">
+                <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSfOnnrFperV87C10Mk_jNWuaxZY60VS11_G7sKmxp1MrE0mAQ/viewform?pli=1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="m-auto text-center rounded-xl w-full transition-all p-[2px] gradient hover:scale-105 hover:[&>div>div]:text-black"
+                >
+                    <div
+                        class="flex flex-col justify-between h-full bg-black hover:bg-transparent rounded-lg p-2"
+                    >
+                        <div class="flex flex-col justify-center text-white">
+                            <span class="font-bold">
+                                Postulate para dar una charla o un taller
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
+
+        <BackToTop client:only="react" />
     </section>
 </header>
