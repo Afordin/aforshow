@@ -142,7 +142,7 @@ export default function Ticket({}) {
                         )
                         tickeSvgtEl.current.style.width = '100%'
                         tickeSvgtEl.current.style.height = '100%'
-                        const tweetText = `¡Estoy emocionado! ¡Acabo de asegurar mi entrada para el increíble #AforShow en Twitch! 🎉👩‍💻👨‍💻No puedo esperar para sumergirme en las charlas y talleres de programación más inspiradores.Únete a esta experiencia épica ➡️ https://afor.show/ #DesarrolloDigital`
+                        const tweetText = `¡Estoy emocionado! ¡Acabo de asegurar mi entrada para el increíble #AforShow en Twitch! 🎉👩‍💻👨‍💻No puedo esperar para sumergirme en las charlas y talleres de programación más inspiradores.Únete a esta experiencia épica ➡️ https://afor.show/?username=${ticket.username_github} #DesarrolloDigital`
                         const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
                             tweetText
                         )}`
