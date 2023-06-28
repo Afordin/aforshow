@@ -13,19 +13,19 @@ export default function TicketMovil({ ticket }: Props) {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 mt-14 text-xl w-full text-neutral-200 flex flex-col gap-12 ">
                 <div className="text-center">
                     <h4> Ticket N°</h4>
-                    <span className="font-bold text-gradient ">
+                    <span className="font-bold ">
                         #{ticket.num_ticket}
                     </span>
                 </div>
                 <div className="text-center">
                     <h4>{ticket.name}</h4>
-                    <span className="font-bold text-gradient capitalize ">
+                    <span className="font-bold capitalize ">
                         @{ticket.username_github}
                     </span>
                 </div>
             </div>
             <div className="absolute bottom-10 left-1/2 -translate-x-1/2 ">
-                <picture className="rounded-full w-[72px] overflow-hidden p-1 gradient inline-block">
+                <picture className="rounded-full w-[72px] overflow-hidden p-1 inline-block">
                     <img
                         src={ticket.avatar_url}
                         alt={`Imagen de ${ticket.name}`}

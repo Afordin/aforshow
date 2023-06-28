@@ -58,7 +58,7 @@ export default function TicketDektop({ ticket }: Props) {
                     <div className="absolute top-12 right-12">
                         <picture
                             data-atropos-offset="6"
-                            className="rounded-full w-[72px] overflow-hidden p-1 gradient inline-block"
+                            className="rounded-full w-[72px] overflow-hidden p-1 inline-block"
                         >
                             <img
                                 src={ticket.avatar_url}
