@@ -70,6 +70,7 @@ export default function Ticket({}) {
             html2canvas(tickeSvgtEl.current, {
                 useCORS: true,
                 allowTaint: true,
+                foreignObjectRendering: true
             }).then((canvas) => {
                 const imgData = canvas.toDataURL('image/png')
                 const blob = dataURLToBlob(imgData)
