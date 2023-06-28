@@ -4,9 +4,9 @@ const { participant } = Astro.props as { participant: Participant }
 ---
 
 <article
-    class="flex lg:flex-row flex-col justify-start lg:gap-20 gap-4 items-center transition-all"
+    class="flex lg:flex-row flex-col justify-start lg:gap-20 gap-4 items-center transition-all w-[70%] m-auto"
 >
-    <picture class="rounded-full w-48 md:w-64 overflow-hidden p-3 gradient">
+    <picture class="rounded-full w-32 md:w-32 overflow-hidden p-1 gradient">
         <img
             src={participant.img}
             alt={`Imagen de ${participant.name}`}
@@ -14,11 +14,11 @@ const { participant } = Astro.props as { participant: Participant }
         />
     </picture>
 
-    <div class="text-white flex-1 text-3xl">
+    <div class="text-white flex-1 text-2xl">
         <h3 class="font-bold capitalize pb-4 leading-8 lg:text-start">
             {participant.name}
         </h3>
-        <p class="text-start text-sm md:text-[20px]">
+        <p class="text-center text-sm md:text-[20px] lg:text-start">
             {participant.descrition}
         </p>
     </div>
