@@ -119,35 +119,11 @@ export default function Ticket({}) {
         return new Blob([new Uint8Array(byteArrays)], { type: contentType })
     }
     const createTweet = () => {
-        if (tickeSvgtEl.current) {
-            html2canvas(tickeSvgtEl.current, {
-                useCORS: true,
-                allowTaint: true,
-            }).then(async (canvas) => {
-                const imgData = canvas.toDataURL('image/png')
-                const blob = dataURLToBlob(imgData)
-                navigator.clipboard
-                    .write([
-                        new ClipboardItem({
-                            [blob.type]: blob,
-                        }),
-                    ])
-                    .then(() => {
-                        alert(
-                            'Se ha copiado la imagen de tu ticket en tu portapapeles, al abrir el tweet pegas la imagen...'
-                        )
-                        const tweetText = `¡Estoy emocionado! 
-                        ¡Acabo de obtener una entrada para el increíble evento de @afor_digital en Twitch! 🎉👨‍💻 
-                        No puedo esperar para sumergirme en charlas y talleres de programación de primer nivel en el #AforShow. 
-                        ¡Únete a mí y descubre las últimas tendencias en el mundo de la tecnología! 💡✨ 
-                        ¡Consigue tu entrada aquí: https://afor.show/! #Programación #ComunidadTech`
-                        const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                            tweetText
-                        )}`
-                        window.open(tweetUrl, '_blank')
-                    })
-            })
-        }
+        const tweetText = `¡Estoy emocionado! ¡Conseguí una entrada para el increíble #AforShow de @afor_digital en Twitch! 🎉👨‍💻 Charlas y talleres de programación que no te puedes perder. Únete a mí en este evento épico. ¡Regístrate aquí!`
+        const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+            tweetText
+        )}&url=https://afor.show/?username=${ticket.username_github}`
+        window.open(tweetUrl, '_blank')
     }
     useEffect(() => {
         const checkImageExists = async () => {}
@@ -182,7 +158,7 @@ export default function Ticket({}) {
                 {!Logued && !FoundedTicket && (
                     <button
                         ref={ticketEl}
-                        className="font-extrabold text-4xl border-4 border-black p-4 px-10 bg-orange-400 hover:text-white hover:border-orange-400 hover:bg-black transition-all rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2   z-[200] md:whitespace-nowrap"
+                        className="font-extrabold text-4xl border-4 border-black p-4 px-10 bg-orange-400 hover:text-white hover:border-orange-400 hover:bg-black transition-all rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2   z-[38] md:whitespace-nowrap"
                         type="button"
                         onClick={onClick}
                     >
