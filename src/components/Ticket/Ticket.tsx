@@ -158,7 +158,7 @@ export default function Ticket({}) {
                 {!Logued && !FoundedTicket && (
                     <button
                         ref={ticketEl}
-                        className="font-extrabold text-4xl border-4 border-black p-4 px-10 bg-orange-400 hover:text-white hover:border-orange-400 hover:bg-black transition-all rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2   z-[200] md:whitespace-nowrap"
+                        className="font-extrabold text-4xl border-4 border-black p-4 px-10 bg-orange-400 hover:text-white hover:border-orange-400 hover:bg-black transition-all rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2   z-[38] md:whitespace-nowrap"
                         type="button"
                         onClick={onClick}
                     >
