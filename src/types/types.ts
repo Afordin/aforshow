@@ -33,8 +33,16 @@ export interface Faq {
 }
 
 export interface MenuLink {
-    name: string,
+    name: string
     anchor: string
 }
 
 export interface Database {}
+
+export interface TimeLocal {
+    day: number
+    month: number
+    monthName: string
+    time: string
+    fulltime: string
+}
