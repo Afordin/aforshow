@@ -1,6 +1,7 @@
 ---
 import { getLocalTime } from '../utils/getLocalTime'
 import BackToTop from './BackToTop'
+import DateHeader from './DateHeader'
 import Navbar from './Navbar'
 const { day, monthName, time } = getLocalTime()
 ---
@@ -33,16 +34,7 @@ const { day, monthName, time } = getLocalTime()
                     >
                 </a>
             </div>
-            <h3 class="text-center text-4xl">
-                <span class="font-bold text-white"
-                    ><span class="font-extrabold text-gradient">{day}</span> de <span
-                        class="capitalize">{monthName}</span
-                    >
-                    <span class="font-extrabold text-gradient">•</span>
-
-                    <span class="text-gray-500 capitalize">{time} Hs</span>
-                </span>
-            </h3>
+            <DateHeader client:only="react" />
             <div class="relative flex w-[80%] md:w-[30%] mx-auto mt-4">
                 <a
                     href="https://docs.google.com/forms/d/e/1FAIpQLSfOnnrFperV87C10Mk_jNWuaxZY60VS11_G7sKmxp1MrE0mAQ/viewform?pli=1"
