@@ -2,11 +2,8 @@ import { Ticket, User } from '../types/types'
 import { supabase } from './supebase'
 
 export async function getTicket(user: User): Promise<Ticket> {
+    const LimitCaracterName = 21
     try {
-        let ticket = localStorage.getItem('ticket')
-        if (ticket) {
-            return JSON.parse(ticket) as Ticket
-        }
         let data = await findDatabase(user.userName)
         if (!data.data) {
             let result = await insertDatabase(user)
@@ -20,8 +17,22 @@ export async function getTicket(user: User): Promise<Ticket> {
                 throw 'error al obtener el ticket'
             }
         }
-        const { username_github, avatar_url, name, num_ticket } =
+        let { username_github, avatar_url, name, num_ticket } =
             data.data as Ticket
+        if (name.length > LimitCaracterName) {
+            const splitName = name.split(' ')
+            if (splitName.length > 2) {
+                if (
+                    `${splitName[0]} ${splitName[1]} ${splitName[2]}`.length <
+                    LimitCaracterName
+                ) {
+                    name = `${splitName[0]} ${splitName[1]}`
+                } else {
+                    name = `${splitName[0]} ${splitName[2]}`
+                }
+            }
+            name = `${name.slice(0, LimitCaracterName)} ...`
+        }
         const newTicket: Ticket = {
             username_github,
             avatar_url,
