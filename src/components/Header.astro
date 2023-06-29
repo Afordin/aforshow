@@ -1,13 +1,16 @@
 ---
-import BackToTop from "./BackToTop";
-import Navbar from "./Navbar";
+import { getLocalTime } from '../utils/getLocalTime'
+import BackToTop from './BackToTop'
+import DateHeader from './DateHeader'
+import Navbar from './Navbar'
+const { day, monthName, time } = getLocalTime()
 ---
 
 <header
     class="min-h-screen lg:min-h-min overflow-hidden p-8 relative before:content-[''] before:bg-[url('/stars_presentation.svg')] before:opacity-10 before:absolute before:-top-5 before:md:top-10 before:left-1/2 before:-translate-x-1/2 before:-bottom-10 before:max-w-[40rem] before:w-full before:m-auto before:bg-center before:bg-no-repeat before:bg-contain"
 >
     <section id="inicio" class="m-auto">
-        <Navbar client:only="react"/>
+        <Navbar client:only="react" />
         <div class="transition-all hover:scale-105 cursor-pointer">
             <img
                 src="/stars_logo.svg"
@@ -31,15 +34,7 @@ import Navbar from "./Navbar";
                     >
                 </a>
             </div>
-            <h3 class="text-center text-4xl">
-                <span class="font-bold text-white"
-                    ><span class="font-extrabold text-gradient">21</span> de Julio</span
-                >
-                <span class="font-extrabold text-gradient">•</span>
-
-                <span class="text-gray-500">20:00 Hs</span>
-            </h3>
-
+            <DateHeader client:only="react" />
             <div class="relative flex w-[80%] md:w-[30%] mx-auto mt-4">
                 <a
                     href="https://docs.google.com/forms/d/e/1FAIpQLSf6_gPvRLoBlNo2KK1VID15y55uR911WGNzDy5eMKQ3K38agA/viewform"
@@ -59,6 +54,7 @@ import Navbar from "./Navbar";
                 </a>
             </div>
         </div>
-        <BackToTop client:only="react"/>
+
+        <BackToTop client:only="react" />
     </section>
 </header>
