@@ -120,8 +120,8 @@ export default function Ticket({}) {
     }
     const createTweet = () => {
         if (tickeSvgtEl.current) {
-            tickeSvgtEl.current.style.width = 'fit-content'
-            tickeSvgtEl.current.style.height = 'fit-content'
+            tickeSvgtEl.current.style.width = '100%'
+            tickeSvgtEl.current.style.height = '100%'
             html2canvas(tickeSvgtEl.current, {
                 useCORS: true,
                 allowTaint: true,
