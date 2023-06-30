@@ -2,7 +2,7 @@
 import Avatar from './Avatar.astro'
 import type { Participant } from '../../types/types'
 const participants: Participant[] = [
-    {
+    /*{
         name: 'Sandra Code',
         descrition:
             'Taller practico para dar tus primeros pasos en React.',
@@ -33,7 +33,7 @@ const participants: Participant[] = [
         title: 'Fullstack',
         type: 'Charla',
         img: 'https://www.elnacional.cat/enblau/uploads/s1/18/96/90/12/adam-sandler-grande_1_630x630.jpeg',
-    },
+    },*/
 ]
 ---
 
@@ -49,6 +49,13 @@ const participants: Participant[] = [
             participants.map((participant) => (
                 <Avatar participant={participant} />
             ))
+        }
+        {
+            participants.length == 0 && (
+                <div class=" text-gray-400 text-2xl">
+                    ¡Se anunciaran en breve!
+                </div>
+            )
         }
     </section>
 </section>
