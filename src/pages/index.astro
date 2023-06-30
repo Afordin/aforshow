@@ -5,64 +5,41 @@ import Participantes from '../components/Participantes/Participantes.astro'
 import Ticket from '../components/Ticket/Ticket'
 import Faq from '../components/Faq.jsx'
 import '../../public/global.css'
+
+const usernameTicket = Astro.url.searchParams.get('username') ?? ''
+
+const ogImage = usernameTicket
+	? `https://gmdotcapsjpczyzpjirq.supabase.co/storage/v1/object/public/Tickets%20Images/Ticket-de-@${usernameTicket}.png`
+	: 'https://afor.show/aforshow.png'
+
+const ogTitle =
+	(usernameTicket ? `Ticket de @${usernameTicket}` : 'AforShow') +
+	' -  Evento de programacion de charlas y talleres para la comunidad'
 ---
 
 <html lang="es" class="scroll-smooth">
-	<meta charset="utf-8" />
-	<script>
-		const url = new URL(window.location.href)
-		const searchParams = new URLSearchParams(url.search)
-		const username = searchParams.get('username') || ''
-		document.querySelector('head').insertAdjacentHTML(
-			'afterend',
-			`
-			<meta
-		name="title"
-		content="${
-			username != '' ? `Ticket de @${username}` : 'Aforshow'
-		} -  Evento de programacion de charlas y talleres para la comunidad"
-	/><meta
-		name="twitter:title"
-		content="${
-			username != '' ? `Ticket de @${username}` : 'Aforshow'
-		} -  Evento de programacion de charlas y talleres para la comunidad"
-	/>
-	<meta
-		name="twitter:description"${
-			username != '' ? `Ticket de @${username}` : 'Aforshow'
-		} -  Evento de programacion de charlas y talleres para la comunidad"
-	/>
-	`
-		)
-	</script>
 	<link rel="icon" type="image/png" href="/icon.png" />
+	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
+
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@afordigital" />
 	<meta name="twitter:creator" content="@afordigital" />
-	<meta name="twitter:image" content="https://afor.show/aforshow.png" />
-
-	<meta
-		property="twitter:url"
-		content={`https://vercel-aforshow.vercel.app/`}
-	/>
+	<meta name="twitter:image" content={ogImage} />
+	<meta property="twitter:url" content={`https://afor.show/`} />
 	<meta property="twitter:type" content="website" />
-	<meta property="og:type" content="website" />
+	<meta name="twitter:title" content={ogTitle} />
+	<meta name="twitter:description" content={ogTitle} />
 
+	<meta property="og:type" content="website" />
+	<meta name="og:image" content={ogImage} />
 	<meta name="og:card" content="summary_large_image" />
 	<meta name="og:site" content="@afordigital" />
 	<meta name="og:creator" content="@afordigital" />
-	<meta
-		name="og:title"
-		content="Aforshow -  Evento de programacion de charlas y talleres para la comunidad"
-	/>
-	<meta
-		name="og:description"
-		content="Aforshow -  Evento de programacion de charlas y talleres para la comunidad"
-	/>
-	<meta property='og:image' content="https://afor.show/aforshow.png" />
+	<meta name="og:title" content={ogTitle} />
+	<meta name="og:description" content={ogTitle} />
+	<meta property="og:url" content={`https://afor.show/`} />
 
-	<meta property="og:url" content={`https://vercel-aforshow.vercel.app/`} />
 	<title>
 		Aforshow - Evento de programacion de charlas y talleres para la
 		comunidad de afor
@@ -91,7 +68,7 @@ import '../../public/global.css'
 			<h3 class="text-gray-400 text-2xl text-center pb-16">
 				Para tener todas las noticias únete al <a
 					class="transition-all underline font-extrabold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8]"
-					href="http://"
+					href="https://discord.io/Comu-Afor"
 					target="_blank"
 					rel="noopener noreferrer">Discord</a
 				>
