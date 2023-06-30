@@ -4,7 +4,7 @@ import type { Faq } from '../types/types'
 const faq: Faq[] = [
     {
         question: '¿Dónde puedo ver el evento?',
-        answer: 'El evento se realizará en twitch.tv/afor_digital.',
+        answer: 'El evento se realizará en <a href="https://twitch.tv/afor_digital" target="_blank">twitch.tv/afor_digital</a>.',
     },
     {
         question: '¿Tengo que estar suscrito al canal para verlo?',
@@ -20,7 +20,7 @@ const faq: Faq[] = [
     },
     {
         question: '¿Se podrán ver las charlas más tarde?',
-        answer: 'Sí, todas las charlas se podrán ver más tarde en youtube/afordigital.',
+        answer: 'Sí, todas las charlas se podrán ver más tarde en <a href="https://youtube.com/@afordigital" target="_blank">youtube/@afordigital</a>.',
     },
 ]
 
@@ -31,13 +31,12 @@ const Faq = () => {
         setOpenFaq(prev => {
             return prev === index ? null : index
         })
-        console.log('clicked', index)
     }
 
     return (
         <div id='faq' className='py-16 bg-light-blue'>
             <div className='flex justify-center items-start'>
-                <div className='w-full sm:w-10/12 md:w-1/2'>
+                <div className='w-full sm:w-10/12 xl:w-1/2'>
                     <h2 className='font-extrabold px-10 text-4xl text-transparent bg-clip-text gradient text-center mb-16 mt-18'>
                         Preguntas Frecuentes
                     </h2>
@@ -47,10 +46,11 @@ const Faq = () => {
                                 <li
                                     key={index}
                                     className={`my-2 shadow-lg border-2 border-transparent gradient rounded ${openFaq}`}
-                                    onClick={() => handleFaq(index)}
                                 >
                                     <div className='bg-[#141414]'>
-                                        <h2 className='flex flex-row text-white justify-between items-center font-semibold p-3 cursor-pointer'>
+                                        <h2 className='flex flex-row text-white justify-between items-center font-semibold p-3 cursor-pointer'
+                                            onClick={() => handleFaq(index)}
+                                        >
                                             <span>{item.question}</span>
                                             <svg
                                                 className={`fill-white border-transparent gradient h-6 w-6 transform transition-transform duration-500 rounded-full ${
@@ -69,9 +69,7 @@ const Faq = () => {
                                             openFaq === index ? '' : 'hidden'
                                         }`}
                                     >
-                                        <p className='p-3 text-white'>
-                                            {item.answer}
-                                        </p>
+                                        <p className='p-3 text-white [&>a]:bg-clip-text [&>a]:gradient' dangerouslySetInnerHTML={{__html: item.answer}} />
                                     </div>
                                 </li>
                             )
