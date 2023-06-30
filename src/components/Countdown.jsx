@@ -3,21 +3,21 @@ import { calculateTimeLeft } from '../utils/calculateTimeLeft'
 
 const CountdownCard = ({ label, time }) => {
     return (
-        <div className='text-gray-400  bg-[#141414] p-2 flex flex-col rounded-lg border-t-2 border-gray-500'>
+        <div className='text-gray-400  bg-[#141414] px-6 py-4 flex flex-col rounded-lg border-t-2 border-gray-500'>
             <span className='font-extrabold  text-3xl sm:text-5xl text-gradient'>
                 {time}{' '}
             </span>
-            <span className=''>{label}</span>
+            <span className='text-[20px]'>{label}</span>
         </div>
     )
 }
 
-const Countdown = ({ targetDate }) => {
-    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(targetDate))
+const Countdown = () => {
+    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft())
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            setTimeLeft(calculateTimeLeft(targetDate))
+            setTimeLeft(calculateTimeLeft())
         }, 1000)
 
         return () => clearTimeout(timer)

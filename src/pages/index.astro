@@ -9,19 +9,39 @@ import '../../public/global.css'
 
 <html lang="es" class="scroll-smooth">
 	<meta charset="utf-8" />
+	<script>
+		const url = new URL(window.location.href)
+		const searchParams = new URLSearchParams(url.search)
+		const username = searchParams.get('username') || ''
+		document.querySelector('head').insertAdjacentHTML(
+			'afterend',
+			`
+			<meta
+		name="title"
+		content="${
+			username != '' ? `Ticket de @${username}` : 'Aforshow'
+		} -  Evento de programacion de charlas y talleres para la comunidad"
+	/><meta
+		name="twitter:title"
+		content="${
+			username != '' ? `Ticket de @${username}` : 'Aforshow'
+		} -  Evento de programacion de charlas y talleres para la comunidad"
+	/>
+	<meta
+		name="twitter:description"${
+			username != '' ? `Ticket de @${username}` : 'Aforshow'
+		} -  Evento de programacion de charlas y talleres para la comunidad"
+	/>
+	<meta name="og:image" content="https://bfbnlgbiigcabrdmrjeb.supabase.co/storage/v1/object/public/Tickets%20Images/Ticket-de-@${username}.png" />
+	<meta name="twitter:image" content="https://bfbnlgbiigcabrdmrjeb.supabase.co/storage/v1/object/public/Tickets%20Images/Ticket-de-@${username}.png" />
+	`
+		)
+	</script>
 	<link rel="icon" type="image/png" href="/icon.png" />
 	<meta name="viewport" content="width=device-width" />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@afordigital" />
 	<meta name="twitter:creator" content="@afordigital" />
-	<meta
-		name="twitter:title"
-		content="Aforshow -  Evento de programacion de charlas y talleres para la comunidad"
-	/>
-	<meta
-		name="twitter:description"
-		content="Descripcion de Aforshow -  Evento de programacion de charlas y talleres para la comunidad"
-	/>
 
 	<meta
 		property="twitter:url"
@@ -54,14 +74,11 @@ import '../../public/global.css'
 		<Header />
 		<main>
 			<section
-				class="py-16 flex flex-col text-center gap-[5rem]"
+				class="py-16 flex flex-col text-center gap-[3rem]"
 				id="countdown"
 			>
 				<h3 class="text-gray-400 text-2xl">Quedan</h3>
-				<Countdown
-					targetDate="2023-07-21T20:00:00"
-					client:only="react"
-				/>
+				<Countdown client:only="react" />
 				<h3 class="text-gray-400 text-2xl">
 					Para el <span class="font-bold">AforShow</span>
 				</h3>
@@ -72,8 +89,8 @@ import '../../public/global.css'
 		</main>
 		<footer>
 			<h3 class="text-gray-400 text-2xl text-center pb-16">
-				Para estar al tanto de todo unete al <a
-					class="decoration-[#4BC0C8] hover:text-4xl transition-all underline font-extrabold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8]"
+				Para tener todas las noticias únete al <a
+					class="transition-all underline font-extrabold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8]"
 					href="http://"
 					target="_blank"
 					rel="noopener noreferrer">Discord</a

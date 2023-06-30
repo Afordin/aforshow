@@ -9,6 +9,7 @@ import html2canvas from 'html2canvas'
 import TicketDektop from './TicketDesktop.js'
 import TicketMovil from './TicketMovil.js'
 import TicketShare from './TicketShare.js'
+import { supabase } from '../../utils/supebase.js'
 const tickerDefault: TicketType = {
     num_ticket: '00000',
     name: '',
@@ -18,7 +19,7 @@ const tickerDefault: TicketType = {
 
 export default function Ticket({}) {
     const [FoundedTicket, setFoundedTicket] = useState(false)
-    const [OGImageAdded, setOGImageAdded] = useState(false)
+    const [ImageUrlBlob, setImageUrlBlob] = useState('')
     const { user, Logued, signIn } = useUser()
 
     const ticketEl = useRef(null)
@@ -44,6 +45,58 @@ export default function Ticket({}) {
                 .then((userInfo) => {
                     if (userInfo.username_github == params.get('username')) {
                         setTicket(userInfo as TicketType)
+                        if (tickeSvgtEl.current) {
+                            html2canvas(tickeSvgtEl.current, {
+                                useCORS: true,
+                                allowTaint: true,
+                            }).then(async (canvas) => {
+                                const imgData = canvas.toDataURL('image/png')
+
+                                const { data, error } = await supabase.storage
+                                    .from('Tickets Images')
+                                    .getPublicUrl(
+                                        `Ticket-de-@${userInfo.username_github}.png`
+                                    )
+
+                                if (error) {
+                                    console.error(
+                                        'Error al verificar la existencia de la imagen:',
+                                        error.message
+                                    )
+                                } else {
+                                    if (data.publicUrl) {
+                                        // La imagen no existe, realizar la subida
+                                        const response = await fetch(imgData)
+                                        const blob = await response.blob()
+
+                                        const {
+                                            data: uploadData,
+                                            error: uploadError,
+                                        } = await supabase.storage
+                                            .from('Tickets Images')
+                                            .upload(
+                                                `Ticket-de-@${userInfo.username_github}.png`,
+                                                blob
+                                            )
+
+                                        if (uploadError) {
+                                            console.error(
+                                                'Error al subir la imagen:',
+                                                uploadError.message
+                                            )
+                                        } else {
+                                            console.log(
+                                                'La imagen se ha subido correctamente.'
+                                            )
+                                        }
+                                    } else {
+                                        console.log(
+                                            'La imagen ya existe en el almacenamiento de Supabase.'
+                                        )
+                                    }
+                                }
+                            })
+                        }
                         setFoundedTicket(true)
                     }
                 })
@@ -67,9 +120,13 @@ export default function Ticket({}) {
     }
     const createTweet = () => {
         if (tickeSvgtEl.current) {
+            tickeSvgtEl.current.style.width = 'fit-content'
+            tickeSvgtEl.current.style.height = 'fit-content'
             html2canvas(tickeSvgtEl.current, {
                 useCORS: true,
                 allowTaint: true,
+                backgroundColor: null, // Fondo transparente
+                scale: 2,
             }).then(async (canvas) => {
                 const imgData = canvas.toDataURL('image/png')
                 const blob = dataURLToBlob(imgData)
@@ -83,11 +140,9 @@ export default function Ticket({}) {
                         alert(
                             'Se ha copiado la imagen de tu ticket en tu portapapeles, al abrir el tweet pegas la imagen...'
                         )
-                        const tweetText = `¡Estoy emocionado! 
-                        ¡Acabo de obtener una entrada para el increíble evento de @afor_digital en Twitch! 🎉👨‍💻 
-                        No puedo esperar para sumergirme en charlas y talleres de programación de primer nivel en el #AforShow. 
-                        ¡Únete a mí y descubre las últimas tendencias en el mundo de la tecnología! 💡✨ 
-                        ¡Consigue tu entrada aquí: https://afor.show/! #Programación #ComunidadTech`
+                        tickeSvgtEl.current.style.width = '100%'
+                        tickeSvgtEl.current.style.height = '100%'
+                        const tweetText = `¡Estoy emocionado! ¡Acabo de asegurar mi entrada para el increíble #AforShow en Twitch! 🎉👩‍💻👨‍💻No puedo esperar para sumergirme en las charlas y talleres de programación más inspiradores.Únete a esta experiencia épica ➡️ https://afor.show/?username=${ticket.username_github} #DesarrolloDigital`
                         const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
                             tweetText
                         )}`
@@ -96,7 +151,11 @@ export default function Ticket({}) {
             })
         }
     }
-    useEffect(() => {}, [])
+    useEffect(() => {
+        const checkImageExists = async () => {}
+
+        checkImageExists()
+    }, [])
 
     useEffect(() => {
         try {
@@ -125,7 +184,7 @@ export default function Ticket({}) {
                 {!Logued && !FoundedTicket && (
                     <button
                         ref={ticketEl}
-                        className="font-extrabold text-4xl border-4 border-black p-4 px-10 bg-orange-400 hover:text-white hover:border-orange-400 hover:bg-black transition-all rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2   z-[38] md:whitespace-nowrap"
+                        className="font-extrabold text-4xl border-4 border-black p-4 px-10 bg-orange-400 hover:text-white hover:border-orange-400 hover:bg-black transition-all rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2   z-[200] md:whitespace-nowrap"
                         type="button"
                         onClick={onClick}
                     >
