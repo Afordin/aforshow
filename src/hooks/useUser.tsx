@@ -8,7 +8,6 @@ export const useUser = () => {
     useEffect(() => {
         async function getuser() {
             const { data } = await supabase.auth.getUser()
-            console.log(data)
             if (!data?.user) {
                 setUser(null)
                 return

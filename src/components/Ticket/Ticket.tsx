@@ -84,10 +84,6 @@ export default function Ticket({}) {
                                                 'Error al subir la imagen:',
                                                 uploadError.message
                                             )
-                                        } else {
-                                            console.log(
-                                                'La imagen se ha subido correctamente.'
-                                            )
                                         }
                                     } else {
                                         console.log(
