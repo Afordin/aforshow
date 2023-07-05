@@ -49,6 +49,7 @@ export default function Ticket({}) {
                             html2canvas(tickeSvgtEl.current, {
                                 useCORS: true,
                                 allowTaint: true,
+                                scale: 2,
                             }).then(async (canvas) => {
                                 const imgData = canvas.toDataURL('image/png')
 
@@ -116,13 +117,11 @@ export default function Ticket({}) {
     }
     const createTweet = () => {
         if (tickeSvgtEl.current) {
-            tickeSvgtEl.current.style.width = '100%'
-            tickeSvgtEl.current.style.height = '100%'
             html2canvas(tickeSvgtEl.current, {
                 useCORS: true,
                 allowTaint: true,
                 backgroundColor: null, // Fondo transparente
-                scale: 2,
+                scale: 3,
             }).then(async (canvas) => {
                 const imgData = canvas.toDataURL('image/png')
                 const blob = dataURLToBlob(imgData)
@@ -136,8 +135,6 @@ export default function Ticket({}) {
                         alert(
                             'Se ha copiado la imagen de tu ticket en tu portapapeles, al abrir el tweet pegas la imagen...'
                         )
-                        tickeSvgtEl.current.style.width = '100%'
-                        tickeSvgtEl.current.style.height = '100%'
                         const tweetText = `¡Estoy emocionado! ¡Acabo de asegurar mi entrada para el increíble #AforShow en Twitch! 🎉👩‍💻👨‍💻No puedo esperar para sumergirme en las charlas y talleres de programación más inspiradores.Únete a esta experiencia épica ➡️ https://afor.show/?username=${ticket.username_github} #DesarrolloDigital`
                         const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
                             tweetText
@@ -189,13 +186,17 @@ export default function Ticket({}) {
                     </button>
                 )}
                 <div
-                    className={`atropos reltive ${
+                    className={`atropos reltive w${
                         !Logued && !FoundedTicket && 'blur-sm'
                     }`}
                     id="userTicket"
-                    ref={tickeSvgtEl}
                 >
-                    <TicketDektop ticket={ticket}></TicketDektop>
+                    <div
+                        ref={tickeSvgtEl}
+                        className="hidden md:block max-w-[704px] lg:max-w-[862px] m-auto"
+                    >
+                        <TicketDektop ticket={ticket}></TicketDektop>
+                    </div>
                     <TicketMovil ticket={ticket}></TicketMovil>
                 </div>
             </article>
