@@ -55,38 +55,33 @@ export default function Ticket({}) {
 
                                 const { data, error } = await supabase.storage
                                     .from('Tickets Images')
-                                    .getPublicUrl(
+                                    .download(
                                         `Ticket-de-@${userInfo.username_github}.png`
                                     )
 
-                                if (error) {
-                                    console.error(
-                                        'Error al verificar la existencia de la imagen:',
-                                        error.message
-                                    )
+                                if (error && error.message === "The resource was not found") {
+                                    // La imagen no existe, realizar la subida
+                                    const response = await fetch(imgData)
+                                    const blob = await response.blob()
+
+                                    const {
+                                        data: uploadData,
+                                        error: uploadError,
+                                    } = await supabase.storage
+                                        .from('Tickets Images')
+                                        .upload(
+                                            `Ticket-de-@${userInfo.username_github}.png`,
+                                            blob
+                                        )
+
+                                    if (uploadError) {
+                                        console.error(
+                                            'Error al subir la imagen:',
+                                            uploadError.message
+                                        )
+                                    }
                                 } else {
-                                    if (data.publicUrl) {
-                                        // La imagen no existe, realizar la subida
-                                        const response = await fetch(imgData)
-                                        const blob = await response.blob()
-
-                                        const {
-                                            data: uploadData,
-                                            error: uploadError,
-                                        } = await supabase.storage
-                                            .from('Tickets Images')
-                                            .upload(
-                                                `Ticket-de-@${userInfo.username_github}.png`,
-                                                blob
-                                            )
-
-                                        if (uploadError) {
-                                            console.error(
-                                                'Error al subir la imagen:',
-                                                uploadError.message
-                                            )
-                                        }
-                                    } else {
+                                    if (data) {
                                         console.log(
                                             'La imagen ya existe en el almacenamiento de Supabase.'
                                         )

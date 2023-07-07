@@ -1,7 +1,7 @@
 import { getLocalTime } from './getLocalTime'
 
-export function calculateTimeLeft() {
-    const { fulltime } = getLocalTime()
+export function calculateTimeLeft(time) {
+    const { fulltime } = getLocalTime(time)
     const difference = new Date(fulltime) - new Date()
 
     let timeLeft = []
