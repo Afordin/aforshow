@@ -55,6 +55,6 @@ const items: typeItem[] = [
         Horarios y charlas
     </h2>
     <section class="flex flex-col gap-10">
-        {items.map((item) => <ScheduleItem item={item} />)}
+        {items.map((item) => <ScheduleItem item={item} client:only="react" />)}
     </section>
 </section>
