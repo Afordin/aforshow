@@ -1,11 +1,10 @@
 ---
 import Countdown from '../components/Countdown.jsx'
 import Header from '../components/Header.astro'
-import Participantes from '../components/Participantes/Participantes.astro'
 import Ticket from '../components/Ticket/Ticket'
 import Faq from '../components/Faq.jsx'
 import '../../public/global.css'
-
+import Schedule from '../components/Schedule.astro'
 const usernameTicket = Astro.url.searchParams.get('username') ?? ''
 
 const ogImage = usernameTicket
@@ -65,7 +64,7 @@ const ogTitle =
 					Para el <span class="font-bold">AforShow</span>
 				</h3>
 			</section>
-			<Participantes />
+			<Schedule />
 			<Ticket client:load />
 			<Faq client:only="react" />
 		</main>
