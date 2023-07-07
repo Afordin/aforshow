@@ -1,7 +1,7 @@
 import { TimeLocal } from '../types/types'
 
-export function getLocalTime(): TimeLocal {
-    const date = new Date('2023-07-21T20:00:00+02:00')
+export function getLocalTime(time): TimeLocal {
+    const date = new Date(time)
 
     return {
         day: Number.parseInt(

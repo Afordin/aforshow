@@ -2,7 +2,10 @@ import { useMemo } from 'react'
 import { getLocalTime } from '../utils/getLocalTime'
 
 export default function DateHeader() {
-    const { day, monthName, time } = useMemo(() => getLocalTime(), [])
+    const { day, monthName, time } = useMemo(
+        () => getLocalTime('2023-07-21T20:00:00+02:00'),
+        []
+    )
     return (
         <h3 className="text-center text-4xl">
             <span className="font-bold text-white">
