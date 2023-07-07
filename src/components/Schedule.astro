@@ -1,0 +1,60 @@
+---
+import { ScheduleItem as typeItem } from '../types/types'
+import ScheduleItem from './ScheduleItem'
+
+const nameInterval = '✦ MESA REDONDA ✦ '
+const items: typeItem[] = [
+    {
+        name: 'De Junior a Lider',
+        type: 'presentation',
+        date: '2023-07-21T20:00:00+02:00',
+        speaker: 'Jose Manuel Ortega Falcón',
+    },
+    {
+        name: 'Mi Experiencia como Desarrollador Junior en Latinoamérica: ¿Un Viaje hacia el Éxito?',
+        type: 'presentation',
+        date: '2023-07-21T20:30:00+02:00',
+        speaker: 'Edgar Mejia Vásquez',
+    },
+    {
+        name: nameInterval,
+        type: 'interval',
+        date: '2023-07-21T21:00:00+02:00',
+    },
+    {
+        name: 'El camino menos transitado: Cómo llegué al setcor It a los 35 añazos',
+        type: 'presentation',
+        date: '2023-07-21T21:30:00+02:00',
+        speaker: 'David Rodriguez - Xerosec',
+    },
+    {
+        name: 'Magical grils UI: los secretos de la animacion en Figma',
+        type: 'presentation',
+        date: '2023-07-21T22:00:00+02:00',
+        speaker: 'Anaís Fernández Vilar',
+    },
+    {
+        name: nameInterval,
+        type: 'interval',
+        date: '2023-07-21T22:30:00+02:00',
+    },
+    {
+        name: 'Sobrevivir al Código - Guia para programadores impacientes',
+        type: 'presentation',
+        date: '2023-07-21T23:00:00+02:00',
+        speaker: 'David Huertos -Ikurotime',
+    },
+]
+---
+
+<section class="py-16 flex flex-col gap-24 px-18 p-8">
+    <h2
+        id="horarios"
+        class="font-extrabold text-4xl text-transparent bg-clip-text from-[#c8f2f5] to-[#46c6cf] bg-gradient-to-b text-center"
+    >
+        Horarios y charlas
+    </h2>
+    <section class="flex flex-col gap-10">
+        {items.map((item) => <ScheduleItem item={item} />)}
+    </section>
+</section>
