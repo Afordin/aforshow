@@ -1,9 +1,9 @@
 export interface Participant {
     name: string
-    type: string
     title: string
     img: string
-    descrition: string
+    hora: string
+    type: number
 }
 
 export interface User {
