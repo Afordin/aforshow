@@ -46,3 +46,10 @@ export interface TimeLocal {
     time: string
     fulltime: string
 }
+
+export interface ScheduleItem {
+    name: string
+    date: string
+    type: 'presentation' | 'interval'
+    speaker?: string
+}
