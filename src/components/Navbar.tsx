@@ -12,7 +12,7 @@ const menu: MenuLink[] = [
     },
     {
         name: 'Horario y Charlas',
-        anchor: '#participantes',
+        anchor: '#horarios',
     },
     {
         name: 'Genera tu ticket',
