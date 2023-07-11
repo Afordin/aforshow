@@ -49,11 +49,11 @@ const items: typeItem[] = [
 
 <section class="py-16 flex flex-col gap-24 px-18 p-8" id="horarios">
     <h2
-        class="font-extrabold text-4xl text-transparent bg-clip-text from-[#c8f2f5] to-[#46c6cf] bg-gradient-to-b text-center"
+        class="font-extrabold text-4xl text-transparent bg-clip-text from-[#c8f2f5] to-[#46c6cf] bg-gradient-to-b text-center font-Inter"
     >
         Horarios y charlas
     </h2>
-    <section class="flex flex-col gap-10">
+    <section class="flex flex-col gap-10 max-w-5xl mx-auto">
         {items.map((item) => <ScheduleItem item={item} client:only="react" />)}
     </section>
 </section>

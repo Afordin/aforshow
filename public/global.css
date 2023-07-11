@@ -13,9 +13,14 @@
         font-weight: 700;
         src: url(fonts\messapia\Messapia-Bold.otf) format('otf');
     }
+    @font-face {
+        font-family: 'Inter';
+        font-weight: 500;
+        src: url(fonts/Inter/Inter-Regular.otf) format('otf');
+    }
 }
 @layer utilities {
-    .color-gradient{
+    .color-gradient {
         @apply from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8];
     }
     .gradient {
