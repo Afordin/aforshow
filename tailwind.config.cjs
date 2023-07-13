@@ -6,27 +6,9 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Messapia', 'Helvetica'],
+                Inter: ['Inter', 'sans-serif'],
             },
         },
     },
-    plugins: [
-        plugin(function ({ addBase }) {
-            addBase({
-                '@font-face': {
-                    fontFamily: 'Messapia',
-                    fontWheight: '400',
-                    src: 'url(/fonts/messapia/Messapia-Regular.otf)',
-                },
-            })
-        }),
-        plugin(function ({ addBase }) {
-            addBase({
-                '@font-face': {
-                    fontFamily: 'Messapia',
-                    fontWheight: '700',
-                    src: "url(/fonts/messapia/Messapia-Bold.otf) format('otf')",
-                },
-            })
-        }),
-    ],
+    plugins: [],
 }

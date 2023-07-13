@@ -2,23 +2,60 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@layer base {
-    @font-face {
-        font-family: Messapia;
-        font-weight: 400;
-        src: url(fonts\messapia\Messapia-Regular.otf) format('otf');
-    }
-    @font-face {
-        font-family: Messapia;
-        font-weight: 700;
-        src: url(fonts\messapia\Messapia-Bold.otf) format('otf');
-    }
-    @font-face {
-        font-family: 'Inter';
-        font-weight: 500;
-        src: url(fonts/Inter/Inter-Regular.otf) format('otf');
-    }
+
+@font-face {
+    font-family: Messapia;
+    font-weight: 400;
+    src: url('public/fonts/messapia/Messapia-Regular.otf') format('opentype');
 }
+@font-face {
+    font-family: Messapia;
+    font-weight: 700;
+    src: url('public/fonts/messapia/Messapia-Bold.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Inter';
+    font-weight: 300;
+    src: url('public/fonts/Inter/Inter-Light.otf') format('opentype');
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Inter';
+    font-weight: 400;
+    src: url('fonts/Inter/Inter-Regular.otf') format('opentype');
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Inter';
+    font-weight: 500;
+    src: url('public/fonts/Inter/Inter-Medium.ttf') format('truetype');
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Inter';
+    font-weight: 600;
+    src: url('public/fonts/Inter/Inter-SemiBold.ttf') format('truetype');
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Inter';
+    font-weight: 700;
+    src: url('public/fonts/Inter/Inter-Bold.ttf') format('truetype');
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Inter';
+    font-weight: 800;
+    src: url('public/fonts/Inter/Inter-Black.ttf') format('truetype');
+    font-style: normal;
+    font-display: swap;
+}
+
 @layer utilities {
     .color-gradient {
         @apply from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8];
