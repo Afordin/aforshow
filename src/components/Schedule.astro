@@ -5,55 +5,62 @@ import ScheduleItem from './ScheduleItem'
 const nameInterval = '✦ MESA REDONDA ✦ '
 const items: typeItem[] = [
     {
-        name: 'De Junior a Lider',
+        name: 'De Junior a Líder',
         type: 'presentation',
+        url: '/imgs/JoseManuel.jpg',
         date: '2023-07-21T20:00:00+02:00',
         speaker: 'Jose Manuel Ortega Falcón',
     },
     {
         name: 'Mi Experiencia como Desarrollador Junior en Latinoamérica: ¿Un Viaje hacia el Éxito?',
         type: 'presentation',
+        url: '/imgs/EdgarMejia.jpeg',
         date: '2023-07-21T20:30:00+02:00',
         speaker: 'Edgar Mejia Vásquez',
     },
     {
         name: nameInterval,
         type: 'interval',
+        url: null,
         date: '2023-07-21T21:00:00+02:00',
     },
     {
-        name: 'El camino menos transitado: Cómo llegué al setcor It a los 35 añazos',
+        name: 'El camino menos transitado: Cómo llegué al sector IT a los 35 añazos',
         type: 'presentation',
+        url: '/imgs/Xero.jpg',
         date: '2023-07-21T21:30:00+02:00',
         speaker: 'David Rodriguez - Xerosec',
     },
     {
-        name: 'Magical grils UI: los secretos de la animacion en Figma',
+        name: 'Magical girls UI: los secretos de la animación en Figma',
         type: 'presentation',
+        url: '/imgs/Anais.png',
         date: '2023-07-21T22:00:00+02:00',
         speaker: 'Anaís Fernández Vilar',
     },
     {
         name: nameInterval,
         type: 'interval',
+        url: null,
         date: '2023-07-21T22:30:00+02:00',
     },
     {
-        name: 'Sobrevivir al Código - Guia para programadores impacientes',
+        name: 'Sobrevivir al Código - Guía para programadores impacientes',
         type: 'presentation',
+        url: '/imgs/Kuro.png',
         date: '2023-07-21T23:00:00+02:00',
-        speaker: 'David Huertos -Ikurotime',
+        speaker: 'David Huertos - Ikurotime',
     },
 ]
 ---
 
 <section class="py-16 flex flex-col gap-24 px-18 p-8" id="horarios">
     <h2
-        class="font-extrabold text-4xl text-transparent bg-clip-text from-[#c8f2f5] to-[#46c6cf] bg-gradient-to-b text-center font-Inter"
+        class="font-extrabold text-4xl text-transparent bg-clip-text from-[#c8f2f5] to-[#46c6cf] bg-gradient-to-b text-center"
     >
         Horarios y charlas
     </h2>
-    <section class="flex flex-col gap-10 max-w-5xl mx-auto">
+    <section class="flex flex-col gap-10 max-w-5xl mx-auto font-Inter">
         {items.map((item) => <ScheduleItem item={item} client:only="react" />)}
     </section>
 </section>

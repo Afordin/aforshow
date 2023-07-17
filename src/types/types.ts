@@ -50,6 +50,7 @@ export interface TimeLocal {
 export interface ScheduleItem {
     name: string
     date: string
+    url: string | null
     type: 'presentation' | 'interval'
     speaker?: string
 }
