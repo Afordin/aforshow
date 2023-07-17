@@ -9,7 +9,9 @@ import Navbar from './Navbar'
 >
     <section id="inicio" class="m-auto">
         <Navbar client:only="react" />
-        <div class="transition-all hover:scale-100">
+        <div
+            class="transition-all hover:scale-100 flex flex-col justify-center"
+        >
             <img
                 src="/stars_logo.svg"
                 alt="Stars"
@@ -20,20 +22,17 @@ import Navbar from './Navbar'
                 alt="Event name"
                 class="m-auto w-[40rem] pt-8"
             />
-            <div class="mt-8 mb-4 text-center">
-                <a
-                    href="http://twitch.tv/afor_digital"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-white text-md md:text-2xl hover:underline"
+            <a
+                href="http://twitch.tv/afor_digital"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-white text-md md:text-2xl hover:underline mt-8 mb-4 text-center m-auto"
+            >
+                &lt;&lt;Twitch.tv/<span class="font-semibold"
+                    >afor_digital &gt;&gt;</span
                 >
-                    &lt;&lt;Twitch.tv/<span class="font-semibold"
-                        >afor_digital &gt;&gt;</span
-                    >
-                </a>
-            </div>
+            </a>
             <DateHeader client:only="react" />
-        
         </div>
 
         <BackToTop client:only="react" />
