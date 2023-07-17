@@ -4,12 +4,12 @@ import { getLocalTime } from '../utils/getLocalTime'
 interface Props {
     item: typeItem
 }
-export default function ScheduleItem ({
+export default function ScheduleItem({
     item: { date, name, url, speaker, type },
 }: Props) {
     const { time } = useMemo(() => getLocalTime(date), [date])
     return (
-        <article className='font-Inter flex items-center gap-x-8'>
+        <article className="font-Inter flex flex-col md:flex-row items-center gap-x-8">
             {type === 'presentation' && (
                 <img
                     src={url}
@@ -17,11 +17,11 @@ export default function ScheduleItem ({
                     height={'150px'}
                     title={speaker}
                     alt={speaker}
-                    className='w-[150px] h-[150px] rounded-full object-cover'
+                    className="w-[150px] h-[150px] rounded-full object-cover"
                 />
             )}
-            <div className='flex flex-col font-bold gap-4 text-2xl leading-8 mb-2'>
-                <div className='flex items-center gap-x-4'>
+            <div className="flex flex-col font-bold gap-4 text-2xl leading-8 mb-2">
+                <div className="flex flex-col md:flex-row text-center items-center gap-x-4">
                     <p
                         className={`md:max-w-[80%] ${
                             type === 'presentation'
@@ -32,12 +32,14 @@ export default function ScheduleItem ({
                         {name}
                     </p>
 
-                    <p className='text-[#ffddaf] md:border-l-4 md:pl-4 md:border-gray-500'>
+                    <p className="text-[#ffddaf] md:border-l-4 md:pl-4 md:border-gray-500">
                         {time}hs
                     </p>
                 </div>
                 {type === 'presentation' && (
-                    <p className='text-gray-500 font-semibold'>{speaker}</p>
+                    <p className="text-gray-500 font-semibold text-center">
+                        {speaker}
+                    </p>
                 )}
             </div>
         </article>
