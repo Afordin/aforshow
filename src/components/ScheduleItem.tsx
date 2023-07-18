@@ -21,7 +21,7 @@ export default function ScheduleItem({
                 />
             )}
             <div className="flex flex-col font-bold gap-4 text-2xl leading-8 mb-2">
-                <div className="flex flex-col md:flex-row text-center items-center gap-x-4">
+                <div className="flex flex-col md:flex-row  items-center gap-x-4">
                     <p
                         className={`md:max-w-[80%] ${
                             type === 'presentation'
@@ -37,7 +37,7 @@ export default function ScheduleItem({
                     </p>
                 </div>
                 {type === 'presentation' && (
-                    <p className="text-gray-500 font-semibold text-center">
+                    <p className="text-gray-500 font-semibold  m-auto">
                         {speaker}
                     </p>
                 )}
