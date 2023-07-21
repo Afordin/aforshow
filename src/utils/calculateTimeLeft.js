@@ -1,6 +1,6 @@
 import { getLocalTime } from './getLocalTime'
 
-export function calculateTimeLeft(time) {
+export function calculateTimeLeft (time) {
     const { fulltime } = getLocalTime(time)
     const difference = new Date(fulltime) - new Date()
 
@@ -36,4 +36,9 @@ export function calculateTimeLeft(time) {
     }
 
     return timeLeft
+}
+
+export function calculateDifference (time) {
+    const { fulltime } = getLocalTime(time)
+    return new Date(fulltime) - new Date()
 }
