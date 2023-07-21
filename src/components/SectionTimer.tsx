@@ -4,7 +4,7 @@ import Countdown from './Countdown.jsx'
 
 const SectionTimer = () => {
     const timeLeft = useMemo(
-        () => calculateDifference('2023-07-21T19:00:00+02:00'), []
+        () => calculateDifference('2023-07-21T20:00:00+02:00'), []
     )
 
     return (
