@@ -1,5 +1,5 @@
 ---
-import Countdown from '../components/Countdown.jsx'
+import SectionTimer from '../components/SectionTimer.jsx'
 import Header from '../components/Header.astro'
 import Ticket from '../components/Ticket/Ticket'
 import Faq from '../components/Faq.jsx'
@@ -51,19 +51,7 @@ const ogTitle =
     >
         <Header />
         <main>
-            <section
-                class="py-16 flex flex-col text-center gap-[3rem]"
-                id="countdown"
-            >
-                <h3 class="text-gray-400 text-2xl">Quedan</h3>
-                <Countdown
-                    client:only="react"
-                    date="2023-07-21T20:00:00+02:00"
-                />
-                <h3 class="text-gray-400 text-2xl">
-                    Para el <span class="font-bold">AforShow</span>
-                </h3>
-            </section>
+            <SectionTimer client:only="react" />
             <Schedule />
             <Ticket client:load />
             <Faq client:only="react" />
