@@ -37,7 +37,7 @@ export default function ScheduleItem({
                     </p>
                 </div>
                 {type === 'presentation' && (
-                    <p className="text-gray-500 font-semibold text-center">
+                    <p className="text-gray-500 font-semibold  m-auto">
                         {speaker}
                     </p>
                 )}

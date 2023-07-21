@@ -1,69 +1,79 @@
-/* El archivo base.css inyectado por defecto de la integración */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @font-face {
-    font-family: Messapia;
-    font-weight: 400;
-    src: url('public/fonts/messapia/Messapia-Regular.otf') format('opentype');
+  font-family: Messapia;
+  font-weight: 400;
+  src: url('/fonts/messapia/Messapia-Regular.woff2') format('woff2');
+  font-display: swap;
 }
+
 @font-face {
-    font-family: Messapia;
-    font-weight: 700;
-    src: url('public/fonts/messapia/Messapia-Bold.otf') format('opentype');
+  font-family: Messapia;
+  font-weight: 700;
+  src: url('/fonts/messapia/Messapia-Bold.woff2') format('woff2');
+  font-display: swap;
 }
+
 @font-face {
-    font-family: 'Inter';
-    font-weight: 300;
-    src: url('public/fonts/Inter/Inter-Light.otf') format('opentype');
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Inter';
+  font-weight: 300;
+  src: url('/fonts/Inter/Inter-Light.woff2') format("woff2");
+  font-style: normal;
+  font-display: swap;
 }
+
 @font-face {
-    font-family: 'Inter';
-    font-weight: 400;
-    src: url('fonts/Inter/Inter-Regular.otf') format('opentype');
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Inter';
+  font-weight: 400;
+  src: url('/fonts/Inter/Inter-Regular.woff2') format("woff2");
+  font-style: normal;
+  font-display: swap;
 }
+
 @font-face {
-    font-family: 'Inter';
-    font-weight: 500;
-    src: url('public/fonts/Inter/Inter-Medium.ttf') format('truetype');
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Inter';
+  font-weight: 500;
+  src: url('/fonts/Inter/Inter-Medium.woff2') format("woff2");
+  font-style: normal;
+  font-display: swap;
 }
+
 @font-face {
-    font-family: 'Inter';
-    font-weight: 600;
-    src: url('public/fonts/Inter/Inter-SemiBold.ttf') format('truetype');
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Inter';
+  font-weight: 600;
+  src: url('/fonts/Inter/Inter-SemiBold.woff2') format("woff2");
+  font-style: normal;
+  font-display: swap;
 }
+
 @font-face {
-    font-family: 'Inter';
-    font-weight: 700;
-    src: url('public/fonts/Inter/Inter-Bold.ttf') format('truetype');
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Inter';
+  font-weight: 700;
+  src: url('/fonts/Inter/Inter-Bold.woff2') format("woff2");
+  font-style: normal;
+  font-display: swap;
 }
+
 @font-face {
-    font-family: 'Inter';
-    font-weight: 800;
-    src: url('public/fonts/Inter/Inter-Black.ttf') format('truetype');
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Inter';
+  font-weight: 800;
+  src: url('/fonts/Inter-Black.woff2') format("woff2");
+  font-style: normal;
+  font-display: swap;
 }
 
 @layer utilities {
-    .color-gradient {
-        @apply from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8];
-    }
-    .gradient {
-        @apply bg-gradient-to-br  color-gradient via-55% from-35% to-75%;
-    }
-    .text-gradient {
-        @apply text-transparent bg-clip-text  gradient;
-    }
+  .color-gradient {
+    @apply from-[#FEAC5E] via-[#C779D0] to-[#4BC0C8];
+  }
+
+  .gradient {
+    @apply bg-gradient-to-br color-gradient via-55% from-35% to-75%;
+  }
+
+  .text-gradient {
+    @apply text-transparent bg-clip-text gradient;
+  }
 }
